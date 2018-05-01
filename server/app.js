@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var categoriesRouter = require('./routes/categories');
+var formRouter = require('./routes/form');
 
 var app = express();
 
@@ -18,5 +19,9 @@ app.use('/', indexRouter);
 
 // TODO: insert a new route here :)
 app.use('/categories', categoriesRouter);
+app.use('/form', formRouter);
+
+
+
 
 module.exports = app;
