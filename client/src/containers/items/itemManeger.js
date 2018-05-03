@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ItemForm from '../../components/items/itemForm.js'
+import ItemList from '../../components/items/itemList.js'
+
 import '../../styles/index.css'
 
 
@@ -7,7 +9,7 @@ import '../../styles/index.css'
   constructor(props){
     super(props)
     this.state={
-      value : null,
+      listValue : null,
       categoryValue : 'Webdesign',
       difficultyValue : 'Intermediate',
       linkValue : '',
@@ -61,7 +63,24 @@ import '../../styles/index.css'
     })
     event.preventDefault();
   }
-
+  componentDidMount(){
+    this.fetchData()
+  }
+  fetchData(){
+    const me =this;
+    fetch("/list", {
+    method : 'get'
+    })
+    .then(function(response){
+      return response.json()
+    })
+    .then(function(data){
+      me.setState({
+        listValue : data
+      },()=>{console.log(me.state.listValue)})
+    })
+    .catch(console.log)
+  }
 
   render() {
     return (
@@ -76,6 +95,7 @@ import '../../styles/index.css'
               descriptionHandler={this.textareaFunc}
           />
         </div>
+        <ItemList value={this.state.listValue}/>
       </div>
     );
   }

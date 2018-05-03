@@ -8,3 +8,11 @@ body {
   margin: auto;
   background-color: red;
 }
+.list{
+  width: 75vh;
+  margin: 30px auto;
+}
+.listItems{
+  padding : 5px;
+  border:2px solid black ;
+}
