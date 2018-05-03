@@ -15,9 +15,8 @@ router.post('/', function(req, res, next) {
     difficulty :  req.body.difficultyValue
       })
         .then( function (result) {
-         res.json({ success: true, message: 'ok' });     
+         res.json({ success: true, message: 'ok' });
    })
-
 });
 
 module.exports = router;

@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
 import Test from '../test.js'
-import ItemForm from '../itemForms/ItemForm.js'
+import ItemManeger from '../items/itemManeger.js'
+import ItemList from '../../components/items/itemList.js'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Test/>
-        <ItemForm/>
+        <ItemManeger/>
+        <ItemList/>
       </div>
     );
   }
