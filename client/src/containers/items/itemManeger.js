@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ItemForm from '../../components/items/itemForm.js'
 import ItemList from '../../components/items/itemList.js'
-import Item from '../../components/items/item.js'
+import Item from './item.js'
 
 
 import '../../styles/index.css'

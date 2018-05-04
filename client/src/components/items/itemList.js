@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 
 
@@ -15,8 +16,10 @@ const {value} = this.props;
                   const index = value.indexOf(a)
                   return (
                   <div key={index} className='listItems'>
-                  <p><b>{a.title}</b></p>
-                  <p>{a.link}</p>
+                    <Link to={`/list/${index}`}>
+                      <p className='link'><b>{a.title}</b></p>
+                      <p className='link'>{a.link}</p>
+                    </Link>
                   </div>
                  )
                 })
