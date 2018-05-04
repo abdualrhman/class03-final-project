@@ -17,9 +17,8 @@ const {value} = this.props;
                   const index = value.indexOf(a)
                   return (
                   <div key={index} className='listItems'>
-                  {a.title}
-                  <br/>
-                  {a.link}
+                  <p><b>{a.title}</b></p>
+                  <p>{a.link}</p>
                   </div>
                  )
                 })

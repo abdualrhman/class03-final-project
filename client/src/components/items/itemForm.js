@@ -47,7 +47,7 @@ import PropTypes from 'prop-types';
           <label>Description:
           <textarea
             rows="4"
-            cols="50"
+            cols="37"
             placeholder="Describe what you are linking to and why the link is worth visiting."
             onChange={this.props.descriptionHandler}
           >
