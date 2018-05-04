@@ -23,7 +23,7 @@ import '../../styles/index.css'
     this.linkFunc=this.linkFunc.bind(this)
     this.submitFunc=this.submitFunc.bind(this)
     this.titleFunc=this.titleFunc.bind(this)
-    this.textareaFunc=this.textareaFunc.bind(this)
+    this.descriptionFunc=this.descriptionFunc.bind(this)
 
   }
 
@@ -49,7 +49,7 @@ import '../../styles/index.css'
       titleValue : event.target.value
     })
   }
-  textareaFunc(event){
+  descriptionFunc(event){
     this.setState({
       descriptionValue : event.target.value
     }, ()=>{console.log(this.state.descriptionValue)})
@@ -94,7 +94,7 @@ import '../../styles/index.css'
               difficultyHandler={this.difficultyFunc}
               linkHandler={this.linkFunc}
               titleHandler={this.titleFunc}
-              descriptionHandler={this.textareaFunc}
+              descriptionHandler={this.descriptionFunc}
           />
         </div>
         <ItemList value={this.state.listValue}/>

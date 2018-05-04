@@ -10,7 +10,7 @@ router.post('/', function(req, res, next) {
   return knex('items').insert({
     link: req.body.linkValue,
     title : req.body.titleValue,
-    description : req.body.textareaValue,
+    description : req.body.descriptionValue,
     type : req.body.categoryValue,
     difficulty :  req.body.difficultyValue
       })
