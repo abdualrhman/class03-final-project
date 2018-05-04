@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 
 export default class ItemList extends Component {
-
   render() {
 const {value} = this.props;
     return (
@@ -11,7 +10,6 @@ const {value} = this.props;
       {
         value &&
         <div className='list'>
-
               {
                 value.map(a=>{
                   const index = value.indexOf(a)
@@ -23,9 +21,7 @@ const {value} = this.props;
                  )
                 })
               }
-
         </div>
-
       }
       </div>
     );

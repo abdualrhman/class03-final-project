@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ItemForm from '../../components/items/itemForm.js'
 import ItemList from '../../components/items/itemList.js'
+import Item from '../../components/items/item.js'
+
 
 import '../../styles/index.css'
 
@@ -85,7 +87,7 @@ import '../../styles/index.css'
   render() {
     return (
       <div>
-        <div className="Form">
+        <div>
           <ItemForm
               submitHandler={this.submitFunc}
               categoryHandler={this.categoryFunc}
@@ -96,6 +98,7 @@ import '../../styles/index.css'
           />
         </div>
         <ItemList value={this.state.listValue}/>
+        <Item/>
       </div>
     );
   }
