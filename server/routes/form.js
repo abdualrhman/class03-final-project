@@ -11,7 +11,7 @@ router.post('/', function(req, res, next) {
     link: req.body.linkValue,
     title : req.body.titleValue,
     description : req.body.descriptionValue,
-    type : req.body.categoryValue,
+    category : req.body.categoryValue,
     difficulty :  req.body.difficultyValue
       })
         .then( function (result) {

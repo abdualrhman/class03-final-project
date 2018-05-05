@@ -18,12 +18,9 @@ body {
 .listItems{
   border:2px solid black ;
 }
-h3{
+.header{
  text-align: center
 }
-.link{
-  text-decoration: none;
-}
-Link{
-  text-decoration:  none;
+p{
+  font-size: 12px;
 }

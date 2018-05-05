@@ -7,7 +7,7 @@ import '../../styles/index.css'
   render() {
     return (
       <div>
-       <h3>add content</h3>
+       <h3 className='header'>add content</h3>
         <div className="Form">
           <form onSubmit={this.props.submitHandler}>
           {/* the Category selection */}

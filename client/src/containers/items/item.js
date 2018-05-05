@@ -38,10 +38,11 @@ export default class Item extends Component {
         <p>title</p>
         <h2>{value[this.props.match.params.id].title}</h2>
         <p>category</p>
-        <h2>{value[this.props.match.params.id].type}</h2>
+        <h2>{value[this.props.match.params.id].category}</h2>
         <p>link</p>
         <a target='_blank' href={value[this.props.match.params.id].link}>{value[this.props.match.params.id].link}</a>
-
+        <p>Description</p>
+        <h4>{value[this.props.match.params.id].description}</h4>
         </div>
       }
     </div>

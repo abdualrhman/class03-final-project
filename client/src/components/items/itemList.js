@@ -17,7 +17,7 @@ const {value} = this.props;
                   return (
                   <div key={index} className='listItems'>
                     <Link to={`/list/${index}`}>
-                      <p className='link'><b>{a.title}</b></p>
+                      <h3 className='link'><b>{a.title}</b></h3>
                       <p className='link'>{a.link}</p>
                     </Link>
                   </div>
