@@ -5,9 +5,13 @@ export default class ItemList_ extends Component {
   constructor(props){
     super(props)
     this.state={
-      value:null,
+      initValue:null,
+      newValue:null
     }
     this.fetchData=this.fetchData.bind(this)
+    this.typeFilter=this.typeFilter.bind(this)
+    this.categoryFilter=this.categoryFilter.bind(this)
+    this.difficultyFilter=this.difficultyFilter.bind(this)
   }
 
   componentDidMount(){
@@ -23,25 +27,88 @@ export default class ItemList_ extends Component {
     })
     .then(function(data){
       me.setState({
-        value : data
-      },()=>{console.log(me.state.value)})
+        initValue : data,
+        newValue:data
+      },()=>{console.log(me.state.initValue)})
     })
     .catch(console.log)
   }
+
+
+  typeFilter(event){
+    const {newValue, initValue}=this.state;
+    const filtering = initValue.filter(a=>{ return a.type === event.target.value})
+    console.log(event.target.value)
+
+    event.target.value==="all types"? this.setState({newValue : this.state.initValue}) :
+
+    this.setState({newValue : filtering})
+  }
+
+  categoryFilter(event){
+    const {newValue, initValue}=this.state;
+    const filtering = initValue.filter(a=>{ return a.category === event.target.value})
+    console.log(event.target.value)
+
+    event.target.value==="all categories"? this.setState({newValue : this.state.initValue}) :
+
+    this.setState({newValue : filtering})
+  }
+
+  difficultyFilter(event){
+    const {newValue, initValue}=this.state;
+    const filtering = initValue.filter(a=>{ return a.difficulty === event.target.value})
+    console.log(event.target.value)
+
+    event.target.value==="all levels"? this.setState({newValue : this.state.initValue}) :
+
+    this.setState({newValue : filtering})
+  }
+
+
+
   render() {
-    const {value} = this.state;
+    const {newValue, initValue} = this.state;
     //const bla =this.props.match.params.id
     return (
       <div>
       <Link to='/'>
       <input type='button' value='add content'/>
       </Link>
+
+      <select
+        onChange={this.typeFilter}
+      >
+        <option value="all types">All types</option>
+        <option value="article">Article</option>
+        <option value="video">Video</option>
+      </select>
+      <select
+        onChange={this.categoryFilter}
+      >
+        <option value="all categories">All categories</option>
+        <option value="Webdesign">Webdesign</option>
+        <option value="NodeJS">NodeJS</option>
+        <option value="Database">Database</option>
+        <option value="Architecture">Architecture</option>
+      </select>
+
+      <select
+        onChange={this.difficultyFilter}
+      >
+        <option value="all levels">All levels</option>
+        <option value="easy">Easy</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="hard">Hard</option>
+      </select>
+
+
       {
-        value &&
+        initValue &&
         <div className='list'>
               {
-                value.map(a=>{
-                  const index = value.indexOf(a)
+                newValue.map(a=>{
+                  const index = newValue.indexOf(a)
                   return (
                   <div key={index} className='listItems'>
                     <Link to={`/list/${index}`}>
