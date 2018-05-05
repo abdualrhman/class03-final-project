@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/index.css'
+import {Link} from 'react-router-dom';
+
 
  export default class ItemForm extends Component {
 
@@ -23,9 +25,22 @@ import '../../styles/index.css'
               </select>
             </label>
             </div>
+
             <br/>
+            <div className='formItem'>
+              <label className='formItem'>Type:<br/>
+                <select
+                  onChange={this.props.typeHandler}
+                >
+                  <option value="video">video</option>
+                  <option value="article">article</option>
+                  <option value="other">other</option>
+                </select>
+              </label>
+              </div>
 
             {/* the difficulty selection */}
+            <br/>
             <div>
             <label>difficulty:<br/>
               <select
@@ -71,6 +86,9 @@ import '../../styles/index.css'
 
             <br/>
             <input type="submit" value="Submit"/>
+            <Link to='/list'>
+            <input type="button" value='view content'/>
+            </Link>
           </form>
         </div>
       </div>
@@ -84,6 +102,7 @@ ItemForm.proptypes={
   difficultyHandler : PropTypes.func.isRequired,
   linkHandler : PropTypes.func.isRequired,
   titleHandler : PropTypes.func.isRequired,
-  descriptionHandler : PropTypes.func
+  descriptionHandler : PropTypes.func.isRequired,
+  typeHandler:PropTypes.func.isRequired
 
 }

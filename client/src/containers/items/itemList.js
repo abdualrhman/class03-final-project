@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 
-export default class Item extends Component {
+export default class ItemList_ extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -32,24 +32,29 @@ export default class Item extends Component {
     const {value} = this.state;
     //const bla =this.props.match.params.id
     return (
-      value && Object.keys(this.props).length >1 && this.props.match.params &&
       <div>
-      <Link to='/list'>
-      <input type='button' value='back to the list'/>
+      <Link to='/'>
+      <input type='button' value='add content'/>
       </Link>
       {
-        <div>
-        <p>title</p>
-        <h2>{value[this.props.match.params.id].title}</h2>
-        <p>category</p>
-        <h2>{value[this.props.match.params.id].category}</h2>
-        <p>link</p>
-        <a target='_blank' href={value[this.props.match.params.id].link}>{value[this.props.match.params.id].link}</a>
-        <p>Description</p>
-        <h4>{value[this.props.match.params.id].description}</h4>
+        value &&
+        <div className='list'>
+              {
+                value.map(a=>{
+                  const index = value.indexOf(a)
+                  return (
+                  <div key={index} className='listItems'>
+                    <Link to={`/list/${index}`}>
+                      <h3 className='link'><b>{a.title}</b></h3>
+                      <p className='link'>{a.link}</p>
+                    </Link>
+                  </div>
+                 )
+                })
+              }
         </div>
       }
-    </div>
+      </div>
     );
   }
 }

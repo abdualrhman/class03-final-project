@@ -12,7 +12,8 @@ router.post('/', function(req, res, next) {
     title : req.body.titleValue,
     description : req.body.descriptionValue,
     category : req.body.categoryValue,
-    difficulty :  req.body.difficultyValue
+    difficulty :  req.body.difficultyValue,
+    type:req.body.typeValue
       })
         .then( function (result) {
          res.json({ success: true, message: 'ok' });

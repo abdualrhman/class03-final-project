@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ItemForm from '../../components/items/itemForm.js'
-import ItemList from '../../components/items/itemList.js'
-import Item from './item.js'
+import ItemForm from '../../components/items/itemForm.js';
+
+
 
 
 import '../../styles/index.css'
@@ -12,8 +12,9 @@ import '../../styles/index.css'
     super(props)
     this.state={
       listValue : null,
-      categoryValue : 'Webdesign',
-      difficultyValue : 'Intermediate',
+      categoryValue : 'webdesign',
+      difficultyValue : 'intermediate',
+      typeValue : 'easy',
       linkValue : '',
       titleValue : '',
       descriptionValue : '',
@@ -24,6 +25,7 @@ import '../../styles/index.css'
     this.submitFunc=this.submitFunc.bind(this)
     this.titleFunc=this.titleFunc.bind(this)
     this.descriptionFunc=this.descriptionFunc.bind(this)
+    this.typeFunc=this.typeFunc.bind(this)
 
   }
 
@@ -38,6 +40,12 @@ import '../../styles/index.css'
       difficultyValue : event.target.value
     })
     console.log('difficulty: ',this.state.difficultyValue)
+  }
+  typeFunc(event){
+    this.setState({
+      typeValue : event.target.value
+    })
+    console.log('difficulty: ',this.state.typeValue)
   }
   linkFunc(event){
     this.setState({
@@ -95,10 +103,9 @@ import '../../styles/index.css'
               linkHandler={this.linkFunc}
               titleHandler={this.titleFunc}
               descriptionHandler={this.descriptionFunc}
+              typeHandler={this.typeFunc}
           />
         </div>
-        <ItemList value={this.state.listValue}/>
-        <Item/>
       </div>
     );
   }
