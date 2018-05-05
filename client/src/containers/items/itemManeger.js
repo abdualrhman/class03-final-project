@@ -110,4 +110,3 @@ import '../../styles/index.css'
     );
   }
 }
-// this.state.value && this.state.value[0].name
