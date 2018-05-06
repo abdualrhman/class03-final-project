@@ -11,7 +11,7 @@ body {
   color: #fff
 }
 .list{
-  width: 75vh;
+  width: 75%;
   margin: 30px auto;
   padding : 10px;
 }
@@ -23,4 +23,14 @@ body {
 }
 p{
   font-size: 12px;
+}
+.list-container{
+  width:60%;
+  margin :auto;
+  background-color: #e2e2e2;
+}
+.buttons{
+
+  text-align: center;
+
 }

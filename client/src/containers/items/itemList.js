@@ -60,7 +60,7 @@ export default class ItemList_ extends Component {
     const filtering = initValue.filter(a=>{ return a.difficulty === event.target.value})
     console.log(event.target.value)
 
-    event.target.value==="all levels"? this.setState({newValue : this.state.initValue}) :
+    event.target.value==="all categories"? this.setState({newValue : this.state.initValue}) :
 
     this.setState({newValue : filtering})
   }
@@ -71,7 +71,8 @@ export default class ItemList_ extends Component {
     const {newValue, initValue} = this.state;
     //const bla =this.props.match.params.id
     return (
-      <div>
+      <div className='list-container'>
+      <div className='buttons'>
       <Link to='/'>
       <input type='button' value='add content'/>
       </Link>
@@ -96,11 +97,12 @@ export default class ItemList_ extends Component {
       <select
         onChange={this.difficultyFilter}
       >
-        <option value="all levels">All levels</option>
+        <option value="all levels">All categories</option>
         <option value="easy">Easy</option>
         <option value="intermediate">Intermediate</option>
         <option value="hard">Hard</option>
       </select>
+      </div>
 
 
       {
