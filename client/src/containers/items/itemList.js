@@ -1,122 +1,100 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Rating from '../../components/rateButton/rating.js';
 
-export default class ItemList_ extends Component {
+export default class ItemList extends Component {
   constructor(props){
     super(props)
     this.state={
-      initValue:null,
-      newValue:null
+      value:null
     }
+    //binding the functions
     this.fetchData=this.fetchData.bind(this)
-    this.typeFilter=this.typeFilter.bind(this)
-    this.categoryFilter=this.categoryFilter.bind(this)
-    this.difficultyFilter=this.difficultyFilter.bind(this)
+    this.rateUpFunc=this.rateUpFunc.bind(this)
+    this.rateDownFunc=this.rateDownFunc.bind(this)
+    this.patchData=this.patchData.bind(this)
   }
-
+  //rendering the data after mounting
   componentDidMount(){
     this.fetchData()
   }
+  //getting the data from the database
   fetchData(){
     const me =this;
     fetch("/list", {
     method : 'get'
     })
-    .then(function(response){
+    .then((response)=>{
       return response.json()
     })
-    .then(function(data){
+    .then((data)=>{
       me.setState({
-        initValue : data,
-        newValue:data
-      },()=>{console.log(me.state.initValue)})
+        value : data
+      },()=>{console.log(me.state.value)})
+    })
+    .catch(console.log)
+  }
+  // the rate up function
+  rateUpFunc(index){
+     const {value} = this.state;
+     const item = value[index]
+     const plusItem= ++item.rate_up
+     const newItem={...item, rate_up: plusItem};
+     const newList =[...value]
+     newList[index].rate_up=plusItem
+     this.patchData(newItem, newList)
+  }
+  // the rate down function
+  rateDownFunc(index){
+    const {value} = this.state;
+    const item = value[index]
+    const plusItem= ++item.rate_down
+    const newItem={...item, rate_down: plusItem};
+    const newList =[...value]
+    newList[index].rate_down=plusItem
+     this.patchData(newItem, newList)
+  }
+  // this function updates the data in the database
+  patchData(val, newList){
+    fetch('/patch', {
+      method : 'PATCH',
+      body : JSON.stringify(val),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+    .then(()=>{
+      const me =this;
+      me.setState({value:newList},()=>console.log(this.state.value))
     })
     .catch(console.log)
   }
 
-
-  typeFilter(event){
-    const {newValue, initValue}=this.state;
-    const filtering = initValue.filter(a=>{ return a.type === event.target.value})
-    console.log(event.target.value)
-
-    event.target.value==="all types"? this.setState({newValue : this.state.initValue}) :
-
-    this.setState({newValue : filtering})
-  }
-
-  categoryFilter(event){
-    const {newValue, initValue}=this.state;
-    const filtering = initValue.filter(a=>{ return a.category === event.target.value})
-    console.log(event.target.value)
-
-    event.target.value==="all categories"? this.setState({newValue : this.state.initValue}) :
-
-    this.setState({newValue : filtering})
-  }
-
-  difficultyFilter(event){
-    const {newValue, initValue}=this.state;
-    const filtering = initValue.filter(a=>{ return a.difficulty === event.target.value})
-    console.log(event.target.value)
-
-    event.target.value==="all categories"? this.setState({newValue : this.state.initValue}) :
-
-    this.setState({newValue : filtering})
-  }
-
-
-
   render() {
-    const {newValue, initValue} = this.state;
-    //const bla =this.props.match.params.id
+    const { value} = this.state;
     return (
-      <div className='list-container'>
-      <div className='buttons'>
-      <Link to='/'>
-      <input type='button' value='add content'/>
-      </Link>
-
-      <select
-        onChange={this.typeFilter}
-      >
-        <option value="all types">All types</option>
-        <option value="article">Article</option>
-        <option value="video">Video</option>
-      </select>
-      <select
-        onChange={this.categoryFilter}
-      >
-        <option value="all categories">All categories</option>
-        <option value="Webdesign">Webdesign</option>
-        <option value="NodeJS">NodeJS</option>
-        <option value="Database">Database</option>
-        <option value="Architecture">Architecture</option>
-      </select>
-
-      <select
-        onChange={this.difficultyFilter}
-      >
-        <option value="all levels">All categories</option>
-        <option value="easy">Easy</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="hard">Hard</option>
-      </select>
-      </div>
-
-
+      <div className='list-container jumbotron'>
       {
-        initValue &&
-        <div className='list'>
+        //if the value in state is null, we don't render anything
+        value &&
+        <div className='list '>
               {
-                newValue.map(a=>{
-                  const index = newValue.indexOf(a)
+                value.map(a=>{
+                  const index = value.indexOf(a)
                   return (
                   <div key={index} className='listItems'>
                     <Link to={`/list/${index}`}>
                       <h3 className='link'><b>{a.title}</b></h3>
                       <p className='link'>{a.link}</p>
                     </Link>
+                    {/*the rate component*/}
+                      <Rating
+                        rate_up={a.rate_up}
+                        rate_down={a.rate_down}
+                        rateUpHandler={this.rateUpFunc}
+                        rateDownHandler={this.rateDownFunc}
+                        index={index}
+                      />
                   </div>
                  )
                 })

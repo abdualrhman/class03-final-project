@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var categoriesRouter = require('./routes/categories');
 var formRouter = require('./routes/form');
 var listRouter = require('./routes/list');
+var patchRouter = require('./routes/patch');
 
 
 
@@ -24,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/categories', categoriesRouter);
 app.use('/form', formRouter);
 app.use('/list', listRouter);
+app.use('/patch', patchRouter);
 
 
 
