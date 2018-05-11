@@ -19,19 +19,19 @@ import Selectbutton from './selectButton.js'
               name='Category' value={['Webdesign', 'NodeJS', 'Database', 'Architecture']}
              />
             {/* the type selection */}
-            <br/>
+
               <Selectbutton
                 changeHandler={this.props.typeHandler}
                 name='Type' value={['video', 'article', 'other']}
                />
             {/* the difficulty selection */}
-            <br/>
+
             <Selectbutton
               changeHandler={this.props.difficultyHandler}
               name='Difficulty' value={['Easy', 'Intermediate', 'Hard']}
              />
             {/* the link input */}
-            <br/>
+
             <div className='formItem'>
             <label>title:<br/>
               <input type='text'
@@ -39,14 +39,13 @@ import Selectbutton from './selectButton.js'
             </label>
             </div>
             {/* the title input */}
-            <br/>
+
             <div>
             <label>Link: <br/>
             <input className='err' type='text' onChange={this.props.linkHandler}/>
             </label>
             </div>
             {/* the Description input */}
-            <br/>
             <div>
             <label>Description:<br/>
             <textarea className='err'
@@ -58,9 +57,7 @@ import Selectbutton from './selectButton.js'
             </textarea>
             </label>
             </div>
-            <br/>
             {/*the submit button*/}
-            <br/>
             <input type="submit" value="Submit"/>
             <Link to='/list'>
             <input type="button" value='view content'/>

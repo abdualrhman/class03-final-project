@@ -2,21 +2,44 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat Alternates', sans-serif;
+  background: rgb(238,238,238);
+ /* overflow: hidden; */
 }
 .Form {
   width: 75vh;
   margin: auto;
-  background-color: #4620db;
   padding:10px;
-  color: #fff
+  line-height: 35px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
+  border-radius: 4px;
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
+  padding: 15px;
 }
-.list{
-  width: 50%;
-  margin: 30px auto;
-  padding : 10px;
+
+*, *:before, *:after {
+  /* box-sizing: border-box; */
 }
 .listItems{
-  border:2px solid black ;
+
+  /* height: 90px; */
+  width: 100%;
+  margin: 20px;
+
+
+}
+.item-content{
+height: 100%;
+border: 0px solid rgba(123, 123, 123, 0.498039);
+border-radius: 4px;
+color: rgb(153, 153, 153);
+/* line-height: 90px; */
+/* padding-left: 32px; */
+font-size: 24px;
+font-weight: 400;
+background-color: rgb(255, 255, 255);
+box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
+padding: 10px;
 }
 .header{
  text-align: center
@@ -25,23 +48,31 @@ p{
   font-size: 12px;
 }
 .list-container{
-  width:60%;
-  margin :auto;
-  padding-top :10px;
-  padding-bottom :10px;
+  position: relative;
+  margin: auto;
+  width: 40%;
 }
 .link{
   text-decoration: none;
   color: #2b2b2b;
-  text-align: center;
 }
+.rate-buttons{
 
-.fa-thumbs-up{
-  margin :10px;
+  text-align: right;
+}
+.fas{
+  margin:10px
 }
 .item-container{
-  margin:30px auto;
-  width:50%;
+  /* background-color: red; */
+  width: 50%;
+  margin:5% auto;
+  border: 0px solid rgba(123, 123, 123, 0.498039);
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
+  border-radius: 4px;
+  /* padding: 10px; */
+  font-weight: 400;
 }
 .item-buttons-container{
   display: flex;
@@ -50,13 +81,6 @@ justify-content: space-around;
 border-bottom: 1px solid #777777;
 }
 .item-buttons {
-  background-color: #dddddd;
-  color :black;
-  font-family: 'Montserrat Alternates', sans-serif;
-  margin-bottom: 5px;
-  margin-top: -10px;
-}
-.err{
-  border: 2px solid red;
-/* border-color: red; */
+  margin-bottom: 10px;
+margin-top: -20px;
 }

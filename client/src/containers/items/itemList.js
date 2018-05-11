@@ -73,32 +73,38 @@ export default class ItemList extends Component {
   render() {
     const { value} = this.state;
     return (
-      <div className='list-container jumbotron'>
+      <div className='list-container '>
       {
         //if the value in state is null, we don't render anything
         value &&
-        <div className='list '>
+        <div>
               {
                 value.map(a=>{
                   const index = value.indexOf(a)
                   return (
                   <div key={index} className='listItems'>
-                    <Link to={`/list/${index}`}>
-                      <h3 className='link'><b>{a.title}</b></h3>
-                      <p className='link'>{a.link}</p>
-                    </Link>
-                    {/*the rate component*/}
-                      <Rating
-                        rate_up={a.rate_up}
-                        rate_down={a.rate_down}
-                        rateUpHandler={this.rateUpFunc}
-                        rateDownHandler={this.rateDownFunc}
-                        index={index}
-                      />
+                      <div className='item-content'>
+                        <div className='bla'>
+                        <Link to={`/list/${index}`}>
+                          <h3 className='link'><b>{a.title}</b></h3>
+                          <p className='link'>{a.link}</p>
+                        </Link>
+                        </div>
+                        {/*the rate component*/}
+                          <Rating
+                           rate_up={a.rate_up}
+                           rate_down={a.rate_down}
+                           rateUpHandler={this.rateUpFunc}
+                           rateDownHandler={this.rateDownFunc}
+                           index={index}
+                          />
+                      </div>
                   </div>
+
                  )
                 })
               }
+
         </div>
       }
       </div>

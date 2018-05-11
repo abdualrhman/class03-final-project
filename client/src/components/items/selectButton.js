@@ -21,7 +21,3 @@ export default class Selectbutton extends React.Component{
     )
   }
 }
-// <option value="Webdesign">Webdesign</option>
-// <option value="NodeJS">NodeJS</option>
-// <option value="Database">Database</option>
-// <option value="Architecture">Architecture</option>

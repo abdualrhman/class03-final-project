@@ -39,10 +39,10 @@ export default class Item extends Component {
           <div className='item-buttons-container'>
           {/*back to list button*/}
           <Link to='/list'>
-          <button className='btn item-buttons'>back to the list</button>
+          <button className='btn item-buttons btn-success'>back to the list</button>
           </Link>
           {/*visit the site button*/}
-          <a className='btn item-buttons' target='_blank' href={value[this.props.match.params.id].link}>visit wedsite</a>
+          <a className='btn item-buttons btn-success' target='_blank' href={value[this.props.match.params.id].link}>visit wedsite</a>
           </div>
           {
             <div>
