@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ItemForm from '../../components/items/itemForm.js';
-import '../../styles/index.css'
+import '../../styles/index.css';
 
  export default class ItemManeger extends Component {
   constructor(props){
@@ -16,6 +16,7 @@ import '../../styles/index.css'
       titleErr: false,
       descriptionValue : '',
       descriptionErr: false,
+      activePage: 15
     }
     //binding the functions
     this.categoryFunc =this.categoryFunc.bind(this)
@@ -113,6 +114,7 @@ import '../../styles/index.css'
               descriptionHandler={this.descriptionFunc}
               typeHandler={this.typeFunc}
           />
+
         </div>
       </div>
     );

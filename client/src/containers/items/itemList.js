@@ -6,7 +6,7 @@ export default class ItemList extends Component {
   constructor(props){
     super(props)
     this.state={
-      value:null
+      value:null,
     }
     //binding the functions
     this.fetchData=this.fetchData.bind(this)
@@ -82,7 +82,8 @@ export default class ItemList extends Component {
                 value.map(a=>{
                   const index = value.indexOf(a)
                   return (
-                  <div key={index} className='listItems'>
+                  <div
+                   key={index} className='listItems'>
                       <div className='item-content'>
                         <div className='bla'>
                         <Link to={`/list/${index}`}>
@@ -100,11 +101,9 @@ export default class ItemList extends Component {
                           />
                       </div>
                   </div>
-
                  )
                 })
               }
-
         </div>
       }
       </div>
