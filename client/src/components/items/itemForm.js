@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/index.css'
 import {Link} from 'react-router-dom';
+import Selectbutton from './selectButton.js'
 
 
  export default class ItemForm extends Component {
@@ -13,68 +14,41 @@ import {Link} from 'react-router-dom';
         <div className="Form">
           <form onSubmit={this.props.submitHandler}>
           {/* the Category selection */}
-          <div className='formItem'>
-            <label className='formItem'>Category:<br/>
-              <select
-                onChange={this.props.categoryHandler}
-              >
-                <option value="Webdesign">Webdesign</option>
-                <option value="NodeJS">NodeJS</option>
-                <option value="Database">Database</option>
-                <option value="Architecture">Architecture</option>
-              </select>
-            </label>
-            </div>
+            <Selectbutton
+              changeHandler={this.props.categoryHandler}
+              name='Category' value={['Webdesign', 'NodeJS', 'Database', 'Architecture']}
+             />
+            {/* the type selection */}
 
-            <br/>
-            <div className='formItem'>
-              <label className='formItem'>Type:<br/>
-                <select
-                  onChange={this.props.typeHandler}
-                >
-                  <option value="video">video</option>
-                  <option value="article">article</option>
-                  <option value="other">other</option>
-                </select>
-              </label>
-              </div>
-
+              <Selectbutton
+                changeHandler={this.props.typeHandler}
+                name='Type' value={['video', 'article', 'other']}
+               />
             {/* the difficulty selection */}
-            <br/>
-            <div>
-            <label>difficulty:<br/>
-              <select
-                onChange={this.props.difficultyHandler}
-              >
-                <option value="easy">Easy</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="hard">Hard</option>
-              </select>
-            </label>
-            </div>
 
+            <Selectbutton
+              changeHandler={this.props.difficultyHandler}
+              name='Difficulty' value={['Easy', 'Intermediate', 'Hard']}
+             />
             {/* the link input */}
-            <br/>
-            <div className='formItem'>
-            <label>Link: <br/>
-            <input type='text' onChange={this.props.linkHandler}/>
-            </label>
-            </div>
 
-            {/* the title input */}
-            <br/>
             <div className='formItem'>
             <label>title:<br/>
               <input type='text'
                 onChange={this.props.titleHandler}/>
             </label>
             </div>
+            {/* the title input */}
 
+            <div>
+            <label>Link: <br/>
+            <input className='err' type='text' onChange={this.props.linkHandler}/>
+            </label>
+            </div>
             {/* the Description input */}
-            <br/>
-            <div className='formItem'>
+            <div>
             <label>Description:<br/>
-            <textarea
+            <textarea className='err'
               rows="4"
               cols="37"
               placeholder="Describe what you are linking to and why the link is worth visiting."
@@ -83,8 +57,7 @@ import {Link} from 'react-router-dom';
             </textarea>
             </label>
             </div>
-
-            <br/>
+            {/*the submit button*/}
             <input type="submit" value="Submit"/>
             <Link to='/list'>
             <input type="button" value='view content'/>

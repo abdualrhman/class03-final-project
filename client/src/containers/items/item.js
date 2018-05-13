@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import '../../styles/index.css'
 
 export default class Item extends Component {
   constructor(props){
@@ -32,21 +33,31 @@ export default class Item extends Component {
     const {value} = this.state;
     //const bla =this.props.match.params.id
     return (
-      value && Object.keys(this.props).length >1 && this.props.match.params &&
-      <div>
-      <Link to='/list'>
-      <input type='button' value='back to the list'/>
-      </Link>
-      {
-        <div>
-        <p>title</p>
-        <h2>{value[this.props.match.params.id].title}</h2>
-        <p>category</p>
-        <h2>{value[this.props.match.params.id].category}</h2>
-        <p>link</p>
-        <a target='_blank' href={value[this.props.match.params.id].link}>{value[this.props.match.params.id].link}</a>
-        <p>Description</p>
-        <h4>{value[this.props.match.params.id].description}</h4>
+      <div className='item-container jumbotron'>
+          {value && Object.keys(this.props).length >1 && this.props.match.params &&
+          <div>
+          <div className='item-buttons-container'>
+          {/*back to list button*/}
+          <Link to='/list'>
+          <button className='btn item-buttons btn-success'>back to the list</button>
+          </Link>
+          {/*visit the site button*/}
+          <a className='btn item-buttons btn-success' target='_blank' href={value[this.props.match.params.id].link}>visit wedsite</a>
+          </div>
+          {
+            <div>
+            <p>title</p>
+            <h2>{value[this.props.match.params.id].title}</h2>
+            <p>category</p>
+            <h2>{value[this.props.match.params.id].category}</h2>
+            <p>Description</p>
+            <h4>{value[this.props.match.params.id].description ?
+              value[this.props.match.params.id].description :
+              <p>no description...</p>
+
+            }</h4>
+            </div>
+          }
         </div>
       }
     </div>
