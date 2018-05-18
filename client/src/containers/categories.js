@@ -1,0 +1,49 @@
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+
+export default class CategoryManeger extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      value: null
+    }
+    this.fetchData=this.fetchData.bind(this)
+  }
+
+  componentDidMount(){
+    this.fetchData()
+  }
+  fetchData(){
+    const me =this;
+    fetch("/categories", {
+    method : 'get'
+    })
+    .then(function(response){
+      return response.json()
+    })
+    .then(function(data){
+      me.setState({
+        value : data
+      },()=>{console.log(me.state.value)})
+    })
+    .catch(console.log)
+  }
+  render() {
+    const {value} = this.state;
+    return (
+      <div className='categoty-btn-container'>
+        {value && value.map(a=>{
+          const index = value.indexOf(a)
+          return (
+          <div className='categoty-btn'>
+          <Link key={index} to={`/list?category=${a.id}`}>
+            <button className='btn category-btn '>{a.name}</button>
+            {console.log(a)}
+          </Link>
+          </div>
+          )
+        })}
+      </div>
+    );
+  }
+}

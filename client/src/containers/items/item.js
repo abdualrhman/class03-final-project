@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import '../../styles/index.css'
 
+
 export default class Item extends Component {
   constructor(props){
     super(props)
@@ -15,8 +16,9 @@ export default class Item extends Component {
     this.fetchData()
   }
   fetchData(){
+    const {id}= this.props.match.params;
     const me =this;
-    fetch("/list", {
+    fetch(`/list?itemId=${id}`, {
     method : 'get'
     })
     .then(function(response){
@@ -31,33 +33,33 @@ export default class Item extends Component {
   }
   render() {
     const {value} = this.state;
-    //const bla =this.props.match.params.id
     return (
       <div className='item-container jumbotron'>
-          {value && Object.keys(this.props).length >1 && this.props.match.params &&
-          <div>
+      {value&&console.log(value.link)}
+      {
+        value
+        &&
+        <div>
           <div className='item-buttons-container'>
           {/*back to list button*/}
-          <Link to='/list'>
+          <Link to='/categories'>
           <button className='btn item-buttons btn-success'>back to the list</button>
           </Link>
           {/*visit the site button*/}
-          <a className='btn item-buttons btn-success' target='_blank' href={value[this.props.match.params.id].link}>visit wedsite</a>
+          <a className='btn item-buttons btn-success' target='_blank' href={value.link}>visit wedsite</a>
           </div>
-          {
-            <div>
-            <p>title</p>
-            <h2>{value[this.props.match.params.id].title}</h2>
-            <p>category</p>
-            <h2>{value[this.props.match.params.id].category}</h2>
-            <p>Description</p>
-            <h4>{value[this.props.match.params.id].description ?
-              value[this.props.match.params.id].description :
-              <p>no description...</p>
-
-            }</h4>
-            </div>
-          }
+          <div>
+          <p>title</p>
+          <h2>{value.title}</h2>
+          <br/>
+          <p>category</p>
+          <h2>{value.category}</h2>
+          <p className='description'>
+           {value.description ?
+            value.description :
+            <p>no description...</p>
+          }</p>
+          </div>
         </div>
       }
     </div>

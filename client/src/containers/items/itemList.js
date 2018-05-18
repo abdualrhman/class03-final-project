@@ -16,12 +16,12 @@ export default class ItemList extends Component {
   }
   //rendering the data after mounting
   componentDidMount(){
-    this.fetchData()
+   this.fetchData()
   }
   //getting the data from the database
   fetchData(){
     const me =this;
-    fetch("/list", {
+    fetch(`/list${this.props.location.search}`, {
     method : 'get'
     })
     .then((response)=>{
@@ -74,19 +74,20 @@ export default class ItemList extends Component {
     const { value} = this.state;
     return (
       <div className='list-container '>
-      {
-        //if the value in state is null, we don't render anything
-        value &&
+      {console.log(this.props.location.search)}
+       {
+      //   //if the value in state is null, we don't render anything
+        value && value.length &&
         <div>
               {
                 value.map(a=>{
-                  const index = value.indexOf(a)
+                  const index = value.indexOf(a) +1
                   return (
                   <div
                    key={index} className='listItems'>
                       <div className='item-content'>
                         <div className='bla'>
-                        <Link to={`/list/${index}`}>
+                        <Link to={`/item/${index}`}>
                           <h3 className='link'><b>{a.title}</b></h3>
                           <p className='link'>{a.link}</p>
                         </Link>

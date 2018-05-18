@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import ItemForm from '../../components/items/itemForm.js';
 import '../../styles/index.css';
+import CategoryManeger from '../categories.js';
 
  export default class ItemManeger extends Component {
   constructor(props){
     super(props)
     this.state={
       listValue : null,
-      categoryValue : 'Webdesign',
-      difficultyValue : 'Intermediate',
-      typeValue : 'video',
+      categoryValue : 1,
+      difficultyValue : 1,
+      typeValue : 1,
       linkValue : '',
-      linkErr: false,
       titleValue : '',
-      titleErr: false,
       descriptionValue : '',
-      descriptionErr: false,
-      activePage: 15
     }
     //binding the functions
     this.categoryFunc =this.categoryFunc.bind(this)
@@ -101,6 +98,7 @@ import '../../styles/index.css';
     })
     .catch(console.log)
   }
+
   render() {
     return (
       <div>
@@ -114,7 +112,6 @@ import '../../styles/index.css';
               descriptionHandler={this.descriptionFunc}
               typeHandler={this.typeFunc}
           />
-
         </div>
       </div>
     );

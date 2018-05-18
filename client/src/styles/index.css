@@ -3,7 +3,6 @@ body {
   padding: 0;
   font-family: 'Montserrat Alternates', sans-serif;
   background: rgb(238,238,238);
- /* overflow: hidden; */
 }
 .Form {
   width: 75vh;
@@ -17,24 +16,16 @@ body {
   padding: 15px;
 }
 
-*, *:before, *:after {
-  /* box-sizing: border-box; */
-}
 .listItems{
-
-  /* height: 90px; */
   width: 100%;
   margin: 20px;
-
-
 }
 .item-content{
 height: 100%;
 border: 0px solid rgba(123, 123, 123, 0.498039);
 border-radius: 4px;
 color: rgb(153, 153, 153);
-/* line-height: 90px; */
-/* padding-left: 32px; */
+
 font-size: 24px;
 font-weight: 400;
 background-color: rgb(255, 255, 255);
@@ -57,21 +48,18 @@ p{
   color: #2b2b2b;
 }
 .rate-buttons{
-
   text-align: right;
 }
 .fas{
   margin:10px
 }
 .item-container{
-  /* background-color: red; */
   width: 50%;
   margin:5% auto;
   border: 0px solid rgba(123, 123, 123, 0.498039);
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
   border-radius: 4px;
-  /* padding: 10px; */
   font-weight: 400;
 }
 .item-buttons-container{
@@ -83,4 +71,26 @@ border-bottom: 1px solid #777777;
 .item-buttons {
   margin-bottom: 10px;
 margin-top: -20px;
+}
+.description{
+  font-size: 17px;
+}
+.categoty-btn-container{
+  margin:auto;
+  width: 60%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  /* background-color: red; */
+  border-radius: 4px;
+  font-weight: 400;
+  border: 0px solid rgba(123, 123, 123, 0.498039);
+  padding: 10px;
+  text-align:  center;
+}
+.category-btn{
+   width:700px;
+  height:100px;
+  margin: 15px;
+  border:1px solid #000 ;
+  content:'\f121'; 
 }
