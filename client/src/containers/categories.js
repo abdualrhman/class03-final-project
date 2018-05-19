@@ -35,9 +35,15 @@ export default class CategoryManeger extends Component {
         {value && value.map(a=>{
           const index = value.indexOf(a)
           return (
-          <div className='categoty-btn'>
-          <Link key={index} to={`/list?category=${a.id}`}>
-            <button className='btn category-btn '>{a.name}</button>
+          <div key={index} className='categoty-btn'>
+          <Link  to={`/list?category=${a.id}`}>
+            <button className='btn category-btn'>
+            {a.name}
+            {a.id===1 && <i className="fas fa-code"></i>}
+            {a.id===2 && <i className="fab fa-node-js"></i>}
+            {a.id===3 && <i className="fas fa-database"></i>}
+            {a.id===4 && <i className="fas fa-sitemap"></i>}
+            </button>
             {console.log(a)}
           </Link>
           </div>

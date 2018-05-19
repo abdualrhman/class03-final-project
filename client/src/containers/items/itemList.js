@@ -75,6 +75,7 @@ export default class ItemList extends Component {
     return (
       <div className='list-container '>
       {console.log(this.props.location.search)}
+      {console.log(value)}
        {
       //   //if the value in state is null, we don't render anything
         value && value.length &&
@@ -87,7 +88,7 @@ export default class ItemList extends Component {
                    key={index} className='listItems'>
                       <div className='item-content'>
                         <div className='bla'>
-                        <Link to={`/item/${index}`}>
+                        <Link to={`/item/${a.id}`}>
                           <h3 className='link'><b>{a.title}</b></h3>
                           <p className='link'>{a.link}</p>
                         </Link>

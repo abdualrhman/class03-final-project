@@ -52,7 +52,7 @@ export default class Item extends Component {
           <p>title</p>
           <h2>{value.title}</h2>
           <br/>
-          <p>category</p>
+          <p>Description</p>
           <h2>{value.category}</h2>
           <p className='description'>
            {value.description ?

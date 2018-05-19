@@ -88,9 +88,13 @@ margin-top: -20px;
   text-align:  center;
 }
 .category-btn{
-   width:700px;
+  width:700px;
   height:100px;
   margin: 15px;
   border:1px solid #000 ;
-  content:'\f121'; 
+  content:'\f121';
+  text-align:left;
+}
+i {
+  margin :10px;
 }
