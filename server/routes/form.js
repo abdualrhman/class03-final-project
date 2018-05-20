@@ -11,13 +11,12 @@ router.post('/', function(req, res, next) {
     link: req.body.linkValue,
     title : req.body.titleValue,
     description : req.body.descriptionValue,
-    category : req.body.categoryValue,
-    difficulty :  req.body.difficultyValue,
-    type:req.body.typeValue
+    category_id : req.body.categoryValue,
+    difficulty_id :  req.body.difficultyValue,
+    type_id:req.body.typeValue
       })
         .then( function (result) {
          res.json({ success: true, message: 'ok' });
    })
 });
-
 module.exports = router;

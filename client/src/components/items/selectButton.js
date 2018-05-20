@@ -11,8 +11,8 @@ export default class Selectbutton extends React.Component{
             >
               {
                 value.map(a=>{
-                  const index = value.indexOf(a)
-                  return <option value={a} key={index}>{a}</option>
+                  const index = value.indexOf(a) + 1
+                  return <option value={index} key={index}>{a}</option>
                 })
               }
             </select>

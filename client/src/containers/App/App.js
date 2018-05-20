@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import {Route} from 'react-router-dom';
 import ItemManeger from '../items/itemManeger.js'
-
- import Item from '../items/item.js'
-  import ItemList from '../items/itemList.js'
-
-import {Route} from 'react-router-dom'
+import Item from '../items/item.js';
+import ItemList from '../items/itemList.js'
+import CategoryManeger from '../categories.js';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/list/:id" component={Item}/>
-        <Route exact path="/list" component={ItemList}/>
+        <Route exact path="/item/:id" component={Item}/>
         <Route exact path="/" component={ItemManeger}/>
+        <Route exact path="/categories" component={CategoryManeger}/>
+        <Route exact path="/list" component={ItemList}/>
       </div>
     );
   }
