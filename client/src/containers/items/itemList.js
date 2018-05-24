@@ -76,38 +76,39 @@ export default class ItemList extends Component {
       <div className='list-container '>
       {console.log(this.props.location.search)}
       {console.log(value)}
-       {
-      //   //if the value in state is null, we don't render anything
-        value && value.length &&
-        <div>
-              {
-                value.map(a=>{
-                  const index = value.indexOf(a) +1
-                  return (
-                  <div
-                   key={index} className='listItems'>
-                      <div className='item-content'>
-                        <div className='bla'>
-                        <Link to={`/item/${a.id}`}>
-                          <h3 className='link'><b>{a.title}</b></h3>
-                          <p className='link'>{a.link}</p>
-                        </Link>
-                        </div>
-                        {/*the rate component*/}
-                          <Rating
-                           rate_up={a.rate_up}
-                           rate_down={a.rate_down}
-                           rateUpHandler={this.rateUpFunc}
-                           rateDownHandler={this.rateDownFunc}
-                           index={index}
-                          />
+
+      {
+        //   //if the value in state is null, we don't render anything
+      value && value.length &&
+      <div>
+            {
+              value.map(a=>{
+                const index = value.indexOf(a) +1
+                return (
+                <div
+                 key={index} className='listItems'>
+                    <div className='item-content'>
+                      <div className='bla'>
+                      <Link to={`/item/${a.id}`}>
+                        <h3 className='link'><b>{a.title}</b></h3>
+                        <p className='link'>{a.link}</p>
+                      </Link>
                       </div>
-                  </div>
-                 )
-                })
-              }
-        </div>
-      }
+                      {/*the rate component*/}
+                        <Rating
+                         rate_up={a.rate_up}
+                         rate_down={a.rate_down}
+                         rateUpHandler={this.rateUpFunc}
+                         rateDownHandler={this.rateDownFunc}
+                         index={index}
+                        />
+                    </div>
+                </div>
+               )
+              })
+            }
+      </div>
+        }
       </div>
     );
   }
