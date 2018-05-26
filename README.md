@@ -41,3 +41,6 @@ We suggest the following process for working on the project:
 8. Start thinking about what components should be stateful. Add container components as needed.
 9. Start wiring up all of the functionality, fetching the data from the API and implementing real functionality as opposed to having just static components.
 10. Plan development so you can stop developing any new features in the last 10-15% of the project (4-6 days). Use this time as a "feature freeze" period, where you focus on "hardening" the product by testing and fixing bugs. 
+
+
+# this is a test. therefore, don't approve it please!
