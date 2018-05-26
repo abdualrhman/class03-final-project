@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Rating from '../../components/rateButton/rating.js';
+import Selectbutton from '../../components/items/selectButton.js';
 
 export default class ItemList extends Component {
   constructor(props){
@@ -21,7 +22,7 @@ export default class ItemList extends Component {
   //getting the data from the database
   fetchData(){
     const me =this;
-    fetch(`/list${this.props.location.search}`, {
+    fetch(`list?${this.props.location.search}`, {
     method : 'get'
     })
     .then((response)=>{
@@ -70,17 +71,19 @@ export default class ItemList extends Component {
     .catch(console.log)
   }
 
+
   render() {
     const { value} = this.state;
     return (
       <div className='list-container '>
       {console.log(this.props.location.search)}
       {console.log(value)}
-
+      {console.log(this.state.url)}
       {
-        //   //if the value in state is null, we don't render anything
+     //if the value in state is null, we don't render anything
       value && value.length &&
       <div>
+
             {
               value.map(a=>{
                 const index = value.indexOf(a) +1
@@ -113,3 +116,18 @@ export default class ItemList extends Component {
     );
   }
 }
+
+
+//
+// <div>
+// <label>{name}:<br/>
+//   <select
+//     onChange={changeHandler}
+//   >
+//     {
+//       value.map(a=>{
+//         const index = value.indexOf(a) + 1
+//         return <option value={index} key={index}>{a}</option>
+//   </select>
+// </label>
+// </div>

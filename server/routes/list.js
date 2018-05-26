@@ -38,10 +38,6 @@ router.get('/', function(req, res, next) {
     console.log(data)
     res.send(data);
   });
-
-  // knex('items').select().then( function(data) {
-  //   res.send(data);
-  // });
 });
 
 module.exports = router;
