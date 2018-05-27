@@ -75,19 +75,40 @@ export default class ItemList extends Component {
     .catch(console.log)
   }
   filterHandler(e){
-    if(this.state.value){
-      this.setState({
+      if(e.target.value!=0){
+        this.setState({
         type_id : e.target.value,
         url: `/list${this.props.location.search}&type=${e.target.value}`
       }, ()=>{
         this.fetchData()
       })
+    }else{
+      this.setState({
+      type_id : e.target.value,
+      url: `/list${this.props.location.search}`
+    }, ()=>{
+      this.fetchData()
+    })
     }
+
   }
   render() {
     const { value} = this.state;
     return (
       <div className='list-container '>
+        <div>
+        <label>Type<br/>
+          <select
+            value ={this.state.type_id}
+            onChange={this.filterHandler}
+          >
+             <option value='0'>all</option>
+             <option value='1'>article</option>
+             <option value='2'>video</option>
+             <option value='3'>other</option>
+          </select>
+        </label>
+        </div>
       {console.log(this.props.location.search)}
       {console.log(value)}
       {console.log(this.state.url)}
@@ -95,18 +116,6 @@ export default class ItemList extends Component {
      //if the value in state is null, we don't render anything
       value && value.length &&
       <div>
-        <div>
-        <label>Type<br/>
-          <select
-            value ={this.state.type_id}
-            onChange={this.filterHandler}
-          >
-             <option value='1'>article</option>
-             <option value='2'>video</option>
-             <option value='3'>other</option>
-          </select>
-        </label>
-        </div>
             {
               value.map(a=>{
                 const index = value.indexOf(a) ;
