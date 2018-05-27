@@ -59,7 +59,7 @@ import Selectbutton from './selectButton.js'
             </div>
             {/*the submit button*/}
             <input type="submit" value="Submit"/>
-            <Link to='/list'>
+            <Link to='/categories'>
             <input type="button" value='view content'/>
             </Link>
           </form>

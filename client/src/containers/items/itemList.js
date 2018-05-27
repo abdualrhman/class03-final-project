@@ -8,6 +8,7 @@ export default class ItemList extends Component {
     super(props)
     this.state={
       value:null,
+      type_id: 1,
       url :`/list${this.props.location.search}`,
     }
     //binding the functions
@@ -23,9 +24,9 @@ export default class ItemList extends Component {
   }
   //getting the data from the database
   fetchData(){
-
     const me =this;
-    fetch(`${this.state.url}`, {
+     debugger
+    fetch(this.state.url, {
     method : 'get'
     })
     .then((response)=>{
@@ -56,7 +57,7 @@ export default class ItemList extends Component {
     const newItem={...item, rate_down: plusItem};
     const newList =[...value]
     newList[index].rate_down=plusItem
-     this.patchData(newItem, newList)
+    this.patchData(newItem, newList)
   }
   // this function updates the data in the database
   patchData(val, newList){
@@ -75,10 +76,12 @@ export default class ItemList extends Component {
   }
   filterHandler(e){
     if(this.state.value){
-
       this.setState({
-        type_id : e.target.value
-      }, ()=>{console.log(this.state.type_id)})
+        type_id : e.target.value,
+        url: `/list${this.props.location.search}&type=${e.target.value}`
+      }, ()=>{
+        this.fetchData()
+      })
     }
   }
   render() {
@@ -87,23 +90,23 @@ export default class ItemList extends Component {
       <div className='list-container '>
       {console.log(this.props.location.search)}
       {console.log(value)}
-      {console.log(this.state.type_id)}
-      {console.log(`${this.state.url}&type=${this.state.type_id}`)}
+      {console.log(this.state.url)}
       {
      //if the value in state is null, we don't render anything
       value && value.length &&
       <div>
-      <div>
-      <label>Type<br/>
-        <select
-          onChange={this.filterHandler}
-        >
-           <option value='1'>article</option>
-           <option value='2'>video</option>
-           <option value='3'>other</option>
-        </select>
-      </label>
-      </div>
+        <div>
+        <label>Type<br/>
+          <select
+            value ={this.state.type_id}
+            onChange={this.filterHandler}
+          >
+             <option value='1'>article</option>
+             <option value='2'>video</option>
+             <option value='3'>other</option>
+          </select>
+        </label>
+        </div>
             {
               value.map(a=>{
                 const index = value.indexOf(a) ;
