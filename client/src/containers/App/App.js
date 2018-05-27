@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import ItemManeger from '../items/itemManeger.js'
 import Item from '../items/item.js';
 import ItemList from '../items/itemList.js'
@@ -10,10 +10,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/item/:id" component={Item}/>
-        <Route exact path="/" component={ItemManeger}/>
-        <Route exact path="/categories" component={CategoryManeger}/>
-        <Route exact path="/list" component={ItemList}/>
+        <Switch>
+          <Route exact path="/item/:id" component={Item}/>
+          <Route exact path="/" component={ItemManeger}/>
+          <Route exact path="/categories" component={CategoryManeger}/>
+          <Route exact path="/list" component={ItemList}/>
+        </Switch>
       </div>
     );
   }
