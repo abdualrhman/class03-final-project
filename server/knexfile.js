@@ -2,7 +2,7 @@
 const fs = require('fs');
 const mysql = require('mysql');
 
-const config = JSON.parse(fs.readFileSync("config.json"))
+const config = JSON.parse(fs.readFileSync("config/config.json"))
 const connection = mysql.createConnection({
   host    : config.host,
   user    : config.user,
