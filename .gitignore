@@ -58,5 +58,5 @@ typings/
 .env
 
 #server
-/config.json
+/server/config.json
 
