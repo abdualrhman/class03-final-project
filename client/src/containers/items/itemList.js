@@ -8,12 +8,14 @@ export default class ItemList extends Component {
     super(props)
     this.state={
       value:null,
+      url :`/list?${this.props.location.search}`,
     }
     //binding the functions
     this.fetchData=this.fetchData.bind(this)
     this.rateUpFunc=this.rateUpFunc.bind(this)
     this.rateDownFunc=this.rateDownFunc.bind(this)
     this.patchData=this.patchData.bind(this)
+    this.changeHandler=this.changeHandler.bind(this)
   }
   //rendering the data after mounting
   componentDidMount(){
@@ -22,7 +24,7 @@ export default class ItemList extends Component {
   //getting the data from the database
   fetchData(){
     const me =this;
-    fetch(`list?${this.props.location.search}`, {
+    fetch(this.state.url, {
     method : 'get'
     })
     .then((response)=>{
@@ -43,6 +45,7 @@ export default class ItemList extends Component {
      const newItem={...item, rate_up: plusItem};
      const newList =[...value]
      newList[index].rate_up=plusItem
+     console.log(newList)
      this.patchData(newItem, newList)
   }
   // the rate down function
@@ -70,8 +73,18 @@ export default class ItemList extends Component {
     })
     .catch(console.log)
   }
+  changeHandler(e){
+    if(this.state.value){
+      const params=new URLSearchParams(this.props.location.search)
+      params.set('type', e.target.value)
+      console.log(params.toString())
+      this.setState({
+        url :params.toString()
+      })
 
-
+    }
+    //return window.location.reload()
+  }
   render() {
     const { value} = this.state;
     return (
@@ -83,10 +96,21 @@ export default class ItemList extends Component {
      //if the value in state is null, we don't render anything
       value && value.length &&
       <div>
-
+      <div>
+      <label>Type<br/>
+        <select
+          onChange={this.changeHandler}
+        >
+           <option value='1'>article</option>
+           <option value='2'>video</option>
+           <option value='3'>other</option>
+        </select>
+      </label>
+      </div>
             {
               value.map(a=>{
-                const index = value.indexOf(a) +1
+                const index = value.indexOf(a) ;
+                const indexPlusOne = value.indexOf(a)+1;
                 return (
                 <div
                  key={index} className='listItems'>
@@ -118,16 +142,4 @@ export default class ItemList extends Component {
 }
 
 
-//
-// <div>
-// <label>{name}:<br/>
-//   <select
-//     onChange={changeHandler}
-//   >
-//     {
-//       value.map(a=>{
-//         const index = value.indexOf(a) + 1
-//         return <option value={index} key={index}>{a}</option>
-//   </select>
-// </label>
-// </div>
+//<button onClick={this.buttonFunc}>click me</button>
