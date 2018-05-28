@@ -8,12 +8,12 @@ import CategoryManeger from '../categories.js';
     super(props)
     this.state={
       listValue : null,
-      categoryValue : 1,
-      difficultyValue : 1,
-      typeValue : 1,
-      linkValue : '',
-      titleValue : '',
-      descriptionValue : '',
+      category : 1,
+      difficulty : 1,
+      type : 1,
+      link : '',
+      title : '',
+      description : '',
     }
     //binding the functions
     this.categoryFunc =this.categoryFunc.bind(this)
@@ -27,9 +27,9 @@ import CategoryManeger from '../categories.js';
   // this function changes the states categoty's value
   categoryFunc(event){
     this.setState({
-      categoryValue : event.target.value
+      category : event.target.value
     })
-    console.log('category: ',this.state.categoryValue)
+    console.log('category: ',this.state.category)
   }
   // this function changes the states fifficulty's value
   difficultyFunc(event){
@@ -40,31 +40,33 @@ import CategoryManeger from '../categories.js';
   }
   // this function changes the states type's value
   typeFunc(event){
+    console.log(event.target.name)
     this.setState({
-      typeValue : event.target.value
+      type : event.target.value
     })
-    console.log('difficulty: ',this.state.typeValue)
+    console.log('difficulty: ',this.state.type)
   }
   // this function changes the states link's value
 
   linkFunc(event){
     this.setState({
-      linkValue : event.target.value
+      link : event.target.value
     })
   }
   // this function changes the states title's value
 
   titleFunc(event){
     this.setState({
-      titleValue : event.target.value
+      title : event.target.value
     })
   }
   // this function changes the states discreption's value
 
   descriptionFunc(event){
+    console.log(event.target.name)
     this.setState({
-      descriptionValue : event.target.value
-    }, ()=>{console.log(this.state.descriptionValue)})
+      description : event.target.value
+    })
   }
   // this function submits value in database
   submitFunc(event){
