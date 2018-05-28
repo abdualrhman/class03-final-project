@@ -68,7 +68,6 @@ import CategoryManeger from '../categories.js';
   }
   // this function submits value in database
   submitFunc(event){
-    event.preventDefault();
     console.log('state: ', this.state)
       return   fetch('/form', {
         method : "POST",
@@ -77,6 +76,7 @@ import CategoryManeger from '../categories.js';
       		'Content-Type': 'application/json'
     		})
       })
+      event.preventDefault();
   }
   //rendering the data after mounting
   componentDidMount(){
