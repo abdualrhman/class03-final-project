@@ -24,7 +24,7 @@ import CategoryManeger from '../categories.js';
     const {name, value}=event.target;
     this.setState({
       [name] : value
-    },()=>{console.log([name]+' :'+value)})
+    })
   }
   // this function submits value in database
   submitFunc(event){
