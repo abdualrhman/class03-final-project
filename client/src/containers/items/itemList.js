@@ -8,7 +8,8 @@ export default class ItemList extends Component {
     super(props);
     this.state = {
       value: null,
-      type_id: 1,
+      type_id: 0,
+      difficulty_id:0,
       url: `/list${this.props.location.search}`
     };
     //binding the functions
@@ -72,20 +73,22 @@ export default class ItemList extends Component {
       .catch(console.log);
   }
   filterHandler(e) {
-    if (e.target.value != 0) {
+    const {name, value}=e.target;
+    if (value != 0) {
       this.setState(
         {
-          type_id: e.target.value,
-          url: `/list${this.props.location.search}&type=${e.target.value}`
+          [name]: value,
+          url: `/list${this.props.location.search}&${[name]}=${value}`
         },
         () => {
           this.fetchData();
+          console.log([name]+' :'+ value)
         }
       );
     } else {
       this.setState(
         {
-          type_id: e.target.value,
+          [name]: value,
           url: `/list${this.props.location.search}`
         },
         () => {
@@ -101,11 +104,22 @@ export default class ItemList extends Component {
         <div>
           <label>
             Type<br />
-            <select value={this.state.type_id} onChange={this.filterHandler}>
+            <select value={this.state.type_id} onChange={this.filterHandler} name='type_id'>
               <option value="0">all</option>
               <option value="1">article</option>
               <option value="2">video</option>
               <option value="3">other</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            difficulty<br />
+            <select value={this.state.difficulty_id} onChange={this.filterHandler} name='difficulty_id'>
+              <option value="0">all</option>
+              <option value="1">Amateur</option>
+              <option value="2">World Class</option>
+              <option value="3">Legendary</option>
             </select>
           </label>
         </div>

@@ -23,18 +23,18 @@ router.get('/', function(req, res, next) {
   let sqlQuery = knex.select('items.id', 'items.title','items.description', 'items.link','items.category_id', 'items.type_id', 'items.difficulty_id', 'items.rate_down', 'items.rate_up')
   .from('items');
 
-  if (query.category){
+  if (query.category_id){
     sqlQuery = sqlQuery
-    .where({'items.category_id' :query.category});
+    .where({'items.category_id' :query.category_id});
   }
 
-  if (query.type){
+  if (query.type_id){
     sqlQuery = sqlQuery
-    .where({'items.type_id' :query.type})
+    .where({'items.type_id' :query.type_id})
   }
-  if (query.difficulty){
+  if (query.difficulty_id){
     sqlQuery = sqlQuery
-    .where({'items.difficulty_id' :query.difficulty})
+    .where({'items.difficulty_id' :query.difficulty_id})
   }
 
   sqlQuery
