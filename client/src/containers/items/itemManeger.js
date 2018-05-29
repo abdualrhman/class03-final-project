@@ -34,7 +34,6 @@ import '../../styles/index.css';
         headers: new Headers({
       		'Content-Type': 'application/json'
     		})
-        // .then(()=>{})
       })
   }
   render() {
