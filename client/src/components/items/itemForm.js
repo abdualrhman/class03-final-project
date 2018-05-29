@@ -36,14 +36,14 @@ import Selectbutton from './selectButton.js'
             <label>title:<br/>
               <input type='text'
               name='title'
-                onChange={this.props.titleHandler}/>
+                onChange={this.props.titleHandler} required/>
             </label>
             </div>
             {/* the title input */}
 
             <div>
             <label>Link: <br/>
-            <input name='link' className='err' type='text' onChange={this.props.linkHandler}/>
+            <input name='link' className='err' type='text' onChange={this.props.linkHandler} required/>
             </label>
             </div>
             {/* the Description input */}

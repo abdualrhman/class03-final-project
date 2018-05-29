@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import ItemForm from '../../components/items/itemForm.js';
 import '../../styles/index.css';
-import CategoryManeger from '../categories.js';
 
  export default class ItemManeger extends Component {
   constructor(props){
     super(props)
     this.state={
-      listValue : null,
       category : 1,
       difficulty : 1,
       type : 1,
@@ -28,6 +26,7 @@ import CategoryManeger from '../categories.js';
   }
   // this function submits value in database
   submitFunc(event){
+    this.validateField()
     console.log('state: ', this.state)
       return   fetch('/form', {
         method : "POST",
@@ -35,30 +34,9 @@ import CategoryManeger from '../categories.js';
         headers: new Headers({
       		'Content-Type': 'application/json'
     		})
+        .then(()=>{event.preventDefault();})
       })
-      event.preventDefault();
   }
-  //rendering the data after mounting
-  componentDidMount(){
-    this.fetchData()
-  }
-  //getting the data from the database
-  fetchData(){
-    const me =this;
-    fetch("/list", {
-    method : 'get'
-    })
-    .then(function(response){
-      return response.json()
-    })
-    .then(function(data){
-      me.setState({
-        listValue : data
-      },()=>{console.log(me.state.listValue)})
-    })
-    .catch(console.log)
-  }
-
   render() {
     return (
       <div>
