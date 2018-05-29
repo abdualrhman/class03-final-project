@@ -55,6 +55,7 @@ import Selectbutton from './selectButton.js'
               cols="37"
               placeholder="Describe what you are linking to and why the link is worth visiting."
               onChange={this.props.descriptionHandler}
+              required
             >
             </textarea>
             </label>

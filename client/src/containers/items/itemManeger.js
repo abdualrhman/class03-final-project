@@ -26,7 +26,7 @@ import '../../styles/index.css';
   }
   // this function submits value in database
   submitFunc(event){
-    this.validateField()
+    event.preventDefault();
     console.log('state: ', this.state)
       return   fetch('/form', {
         method : "POST",
@@ -34,7 +34,7 @@ import '../../styles/index.css';
         headers: new Headers({
       		'Content-Type': 'application/json'
     		})
-        .then(()=>{event.preventDefault();})
+        // .then(()=>{})
       })
   }
   render() {
