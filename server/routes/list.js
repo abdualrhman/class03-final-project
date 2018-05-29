@@ -32,6 +32,10 @@ router.get('/', function(req, res, next) {
     sqlQuery = sqlQuery
     .where({'items.type_id' :query.type})
   }
+  if (query.difficulty){
+    sqlQuery = sqlQuery
+    .where({'items.difficulty_id' :query.difficulty})
+  }
 
   sqlQuery
   .then( function(data) {
