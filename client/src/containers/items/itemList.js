@@ -8,6 +8,7 @@ export default class ItemList extends Component {
     super(props);
     this.state = {
       value: null,
+      category_id:'',
       type_id: 0,
       difficulty_id:0,
       url: `/list${this.props.location.search}`
@@ -18,6 +19,7 @@ export default class ItemList extends Component {
     this.rateDownFunc = this.rateDownFunc.bind(this);
     this.patchData = this.patchData.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
+    this.checkHandler=this.checkHandler.bind(this)
   }
   //rendering the data after mounting
   componentDidMount() {
@@ -97,11 +99,16 @@ export default class ItemList extends Component {
       );
     }
   }
+  checkHandler(e){
+    console.log(e.target.value)
+    //this.props.history.push(`category${}`);
+    console.log(this.props)
+  }
   render() {
     const { value } = this.state;
     return (
-      <div className="list-container ">
-        <div>
+      <div className='div-container'>
+        <div className='filter-container'>
           <label>
             Type<br />
             <select value={this.state.type_id} onChange={this.filterHandler} name='type_id'>
@@ -111,8 +118,7 @@ export default class ItemList extends Component {
               <option value="3">other</option>
             </select>
           </label>
-        </div>
-        <div>
+          <br/>
           <label>
             difficulty<br />
             <select value={this.state.difficulty_id} onChange={this.filterHandler} name='difficulty_id'>
@@ -123,41 +129,43 @@ export default class ItemList extends Component {
             </select>
           </label>
         </div>
-        {console.log(this.props.location.search)}
-        {console.log(value)}
-        {console.log(this.state.url)}
-        {//if the value in state is null, we don't render anything
-        value &&
-          value.length && (
-            <div>
-              {value.map(a => {
-                const index = value.indexOf(a);
-                return (
-                  <div key={index} className="listItems">
-                    <div className="item-content">
-                      <div className="bla">
-                        <Link to={`/item/${a.id}`}>
-                          <h3 className="link">
-                            <b>{a.title}</b>
-                          </h3>
-                          <p className="link">{a.link}</p>
-                        </Link>
+          <div className="list-container ">
+            {console.log(this.props)}
+            {console.log(value)}
+            {console.log(this.state.url)}
+            {//if the value in state is null, we don't render anything
+            value &&
+              value.length && (
+                <div>
+                  {value.map(a => {
+                    const index = value.indexOf(a);
+                    return (
+                      <div key={index} className="listItems">
+                        <div className="item-content">
+                          <div className="bla">
+                            <Link to={`/item/${a.id}`}>
+                              <h3 className="link">
+                                <b>{a.title}</b>
+                              </h3>
+                              <p className="link">{a.link}</p>
+                            </Link>
+                          </div>
+                          {/*the rate component*/}
+                          <Rating
+                            rate_up={a.rate_up}
+                            rate_down={a.rate_down}
+                            rateUpHandler={this.rateUpFunc}
+                            rateDownHandler={this.rateDownFunc}
+                            index={index}
+                          />
+                        </div>
                       </div>
-                      {/*the rate component*/}
-                      <Rating
-                        rate_up={a.rate_up}
-                        rate_down={a.rate_down}
-                        rateUpHandler={this.rateUpFunc}
-                        rateDownHandler={this.rateDownFunc}
-                        index={index}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          )}
-      </div>
+    </div>
     );
   }
 }
