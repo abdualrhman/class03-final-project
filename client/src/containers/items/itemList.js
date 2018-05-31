@@ -7,10 +7,12 @@ export default class ItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      params : new URLSearchParams(this.props.location.search),
       value: null,
-      category_id:'',
+      category_id:new URLSearchParams(this.props.location.search).getAll('category_id'),
       type_id: 0,
       difficulty_id:0,
+      bla: new URLSearchParams(this.props.location.search).getAll('category_id'),
       url: `/list${this.props.location.search}`
     };
     //binding the functions
@@ -19,7 +21,7 @@ export default class ItemList extends Component {
     this.rateDownFunc = this.rateDownFunc.bind(this);
     this.patchData = this.patchData.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
-    this.checkHandler=this.checkHandler.bind(this)
+    this.categoryFunc=this.categoryFunc.bind(this)
   }
   //rendering the data after mounting
   componentDidMount() {
@@ -99,10 +101,14 @@ export default class ItemList extends Component {
       );
     }
   }
-  checkHandler(e){
-    console.log(e.target.value)
-    //this.props.history.push(`category${}`);
-    console.log(this.props)
+  categoryFunc(e){
+    const {name, value} = e.target;
+    this.setState({
+      category_id : e.target.value,
+      url : `list?${[name]}=${value}`
+    }, ()=>{this.fetchData()})
+    console.log()
+
   }
   render() {
     const { value } = this.state;
@@ -128,10 +134,20 @@ export default class ItemList extends Component {
               <option value="3">Legendary</option>
             </select>
           </label>
+          <br/>
+          <label>
+            category<br />
+            <select value={this.state.category_id} onChange={this.categoryFunc} name='category_id'>
+              <option value="1">Webdesign</option>
+              <option value="2">NodeJS</option>
+              <option value="3">Database</option>
+              <option value="4">Architechure</option>
+            </select>
+          </label>
         </div>
           <div className="list-container ">
             {console.log(this.props)}
-            {console.log(value)}
+            {console.log(this.state.bla)}
             {console.log(this.state.url)}
             {//if the value in state is null, we don't render anything
             value &&
