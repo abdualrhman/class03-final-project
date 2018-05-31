@@ -16,50 +16,53 @@ import Selectbutton from './selectButton.js'
           {/* the Category selection */}
             <Selectbutton
               changeHandler={this.props.categoryHandler}
-              name='Category' value={['Webdesign', 'NodeJS', 'Database', 'Architecture']}
+              name='category' value={['Webdesign', 'NodeJS', 'Database', 'Architecture']}
              />
             {/* the type selection */}
 
               <Selectbutton
                 changeHandler={this.props.typeHandler}
-                name='Type' value={['video', 'article', 'other']}
+                name='type' value={['video', 'article', 'other']}
                />
             {/* the difficulty selection */}
 
             <Selectbutton
               changeHandler={this.props.difficultyHandler}
-              name='Difficulty' value={['Easy', 'Intermediate', 'Hard']}
+              name='difficulty' value={['Easy', 'Intermediate', 'Hard']}
              />
             {/* the link input */}
 
             <div className='formItem'>
             <label>title:<br/>
               <input type='text'
-                onChange={this.props.titleHandler}/>
+              name='title'
+                onChange={this.props.titleHandler} required/>
             </label>
             </div>
             {/* the title input */}
 
             <div>
             <label>Link: <br/>
-            <input className='err' type='text' onChange={this.props.linkHandler}/>
+            <input name='link' className='err' type='text' onChange={this.props.linkHandler} required/>
             </label>
             </div>
             {/* the Description input */}
             <div>
             <label>Description:<br/>
             <textarea className='err'
+              name='description'
               rows="4"
               cols="37"
               placeholder="Describe what you are linking to and why the link is worth visiting."
               onChange={this.props.descriptionHandler}
+              required
             >
             </textarea>
             </label>
             </div>
             {/*the submit button*/}
             <input type="submit" value="Submit"/>
-            <Link to='/list'>
+            <Link to='/categories'>
             <input type="button" value='view content'/>
             </Link>
           </form>

@@ -18,7 +18,7 @@ export default class Item extends Component {
   fetchData(){
     const {id}= this.props.match.params;
     const me =this;
-    fetch(`/list?itemId=${id}`, {
+    fetch(`/list/${id}`, {
     method : 'get'
     })
     .then(function(response){

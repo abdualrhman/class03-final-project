@@ -6,7 +6,7 @@ export default class Selectbutton extends React.Component{
     return(
       <div className='form-item'>
           <label>{name}:<br/>
-            <select name={name}
+            <select
               onChange={changeHandler}
             >
               {

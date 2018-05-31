@@ -8,12 +8,12 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
   return knex('items').insert({
-    link: req.body.linkValue,
-    title : req.body.titleValue,
-    description : req.body.descriptionValue,
-    category_id : req.body.categoryValue,
-    difficulty_id :  req.body.difficultyValue,
-    type_id:req.body.typeValue
+    link: req.body.link,
+    title : req.body.title,
+    description : req.body.description,
+    category_id : req.body.category,
+    difficulty_id :  req.body.difficulty,
+    type_id:req.body.type
       })
         .then( function (result) {
          res.json({ success: true, message: 'ok' });
