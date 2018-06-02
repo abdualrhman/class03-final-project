@@ -2,10 +2,10 @@ import React from 'react';
 
 export default class Selectbutton extends React.Component{
   render(){
-    const {name, changeHandler, value}= this.props;
+    const {name, changeHandler, value, inputName}= this.props;
     return(
       <div className='form-item'>
-          <label>{name}:<br/>
+          <label>{inputName}:<br/>
             <select name={name}
               onChange={changeHandler}
             >
