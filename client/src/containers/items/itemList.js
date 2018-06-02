@@ -129,7 +129,8 @@ export default class ItemList extends Component {
             {console.log(this.state.url)}
             {//if the value in state is null, we don't render anything
             value &&
-              value.length && (
+              (value.length) ?
+              (
                 <div>
                   {value.map(a => {
                     const index = value.indexOf(a);
@@ -157,7 +158,9 @@ export default class ItemList extends Component {
                     );
                   })}
                 </div>
-              )}
+              ):
+              <h3>no items to show...</h3>
+            }
             </div>
     </div>
     );
