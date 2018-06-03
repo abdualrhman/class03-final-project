@@ -9,7 +9,7 @@ module.exports = {
     client: 'mysql',
     connection: {
       user    : 'root',
-      password: '1425300',
+      password: 'HYF.cph3',
       database: 'db'
     },
     pool: {
@@ -25,7 +25,7 @@ module.exports = {
     client: 'mysql',
     connection: {
       user    : 'root',
-      password: '1425300',
+      password: 'HYF.cph3',
       database: 'db'
     },
     pool: {
@@ -41,7 +41,7 @@ module.exports = {
     client: 'mysql',
     connection: {
       user    : 'root',
-      password: '1425300',
+      password: 'HYF.cph3',
       database: 'db'
     },
     pool: {

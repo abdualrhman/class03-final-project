@@ -14,9 +14,9 @@
 exports.seed = function(knex, Promise) {
   return
       return knex('category').insert([
-        {id:1,name: 'Webdesign'},
-        {id:2, name: 'NodeJS'},
-        {id:3, name: 'Database'},
-        {id:4,name: 'Architecture' }
+        {name: 'Webdesign'},
+        { name: 'NodeJS'},
+        { name: 'Database'},
+        {name: 'Architecture' }
       ]);
 };
