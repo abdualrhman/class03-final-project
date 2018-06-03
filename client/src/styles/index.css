@@ -40,8 +40,7 @@ p{
 }
 .list-container{
   position: relative;
-  margin: auto;
-  width: 40%;
+  width: 50%;
 }
 .link{
   text-decoration: none;
@@ -97,4 +96,14 @@ margin-top: -20px;
 }
 i {
   margin :10px;
+}
+.div-container{
+  display: flex;
+}
+.filter-container{
+  width:20%;
+  padding-left:30px;
+  margin-left: 10%;
+  margin-top: 20px;
+
 }
