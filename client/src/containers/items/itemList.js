@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../../components/rateButton/rating.js";
-import Selectbutton from "../../components/items/selectButton.js";
+// import Selectbutton from "../../components/items/selectButton.js";
 
 export default class ItemList extends Component {
   constructor(props) {
@@ -72,7 +72,7 @@ export default class ItemList extends Component {
       .catch(console.log);
   }
   filterHandler(e) {
-    if (e.target.value != 0) {
+    if (e.target.value !== 0) {
       this.setState(
         {
           type_id: e.target.value,

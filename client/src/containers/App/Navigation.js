@@ -1,13 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import '../../styles/index.css';
+
+
+
 
 const Navigation = () =>{
     return(
         <div>
-        <nav className='navbar navbar-inverse bg-inverse mb-4'>
-            <Link to='/' className="navbar-brand"> HackYourFuture </Link>
-        </nav>
-
+            <span> 
+                <nav className='navbar-inverse bg-inverse mb-4'> {/* navbar */}
+                    <Link to='/' className="navbar-brand"> HackYourFuture</Link>
+                <span>
+                    <button className='btn-navBar'>< NavLink to='/categories' > Categories</ NavLink></button>
+                    <button className='btn-navBar'>< NavLink to='/' > Add Content</ NavLink></button>
+                    <button className='btn-navBar'>< NavLink to='/' > About</ NavLink></button>
+                </span>
+                </nav>
+            </span>
         </div>
     );
 };
