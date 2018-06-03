@@ -61,10 +61,7 @@ import Selectbutton from './selectButton.js'
             </label>
             </div>
             {/*the submit button*/}
-            <input type="submit" value="Submit"/>
-            <Link to='/categories'>
-            <input type="button" value='view content'/>
-            </Link>
+            <input className='btn btn-success btn-form-submit' type="submit" value="Submit"/>
           </form>
         </div>
       </div>
@@ -82,3 +79,7 @@ ItemForm.proptypes={
   typeHandler:PropTypes.func.isRequired
 
 }
+
+// <Link to='/categories'>
+// <input type="button" value='view content'/>
+// </Link>
