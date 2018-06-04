@@ -12,11 +12,20 @@
 // };
 
 exports.seed = function(knex, Promise) {
-  return
       return knex('category').insert([
         {name: 'Webdesign'},
-        { name: 'NodeJS'},
-        { name: 'Database'},
+        {name: 'NodeJS'},
+        {name: 'Database'},
         {name: 'Architecture' }
       ]);
 };
+
+
+// exports.seed = function(knex, Promise) {
+//       return knex('type').insert([
+//         {name: 'Webdesign'},
+//         {name: 'NodeJS'},
+//         {name: 'Database'},
+//         {name: 'Architecture' }
+//       ]);
+// };
