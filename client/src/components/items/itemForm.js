@@ -28,7 +28,7 @@ import Selectbutton from './selectButton.js'
 
             <Selectbutton
               changeHandler={this.props.difficultyHandler}
-              inputName='Difficulty' name='difficulty' value={['Easy', 'Intermediate', 'Hard']}
+              inputName='Difficulty' name='difficulty' value={['Amateur', 'World Class', 'Legendary']}
              />
             {/* the link input */}
 
