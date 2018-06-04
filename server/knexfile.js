@@ -2,15 +2,25 @@
 const fs = require('fs');
 const mysql = require('mysql');
 
+const config = JSON.parse(fs.readFileSync("config/config.json"))
 
+const connection = mysql.createConnection({
+  host    : config.host,
+  user    : config.user,
+  password: config.password,
+  port    : config.port,
+  database: config.database,
+
+})
 
 module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      user    : 'root',
-      password: '1425300',
-      database: 'db'
+      host    : config.host,
+      user    : config.user,
+      password: config.password,
+      database: config.database,
     },
     pool: {
       min: 2,
@@ -24,9 +34,10 @@ module.exports = {
  staging: {
     client: 'mysql',
     connection: {
-      user    : 'root',
-      password: '1425300',
-      database: 'db'
+      host    : config.host,
+      user    : config.user,
+      password: config.password,
+      database: config.database,
     },
     pool: {
       min: 2,
@@ -40,9 +51,10 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-      user    : 'root',
-      password: '1425300',
-      database: 'db'
+      host    : config.host,
+      user    : config.user,
+      password: config.password,
+      database: config.database,
     },
     pool: {
       min: 2,
