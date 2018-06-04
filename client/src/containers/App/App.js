@@ -12,8 +12,8 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/item/:id" component={Item}/>
-          <Route exact path="/" component={ItemManeger}/>
-          <Route exact path="/categories" component={CategoryManeger}/>
+          <Route exact path="/" component={CategoryManeger}/>
+          <Route exact path="/form" component={ItemManeger}/>
           <Route exact path="/list" component={ItemList}/>
         </Switch>
       </div>
