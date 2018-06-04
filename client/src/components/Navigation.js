@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default const Navigation = () =>{
+const Navigation = () =>{
     return(
         <div>
         <nav className='navbar navbar-inverse bg-inverse mb-4'>
@@ -10,3 +10,4 @@ export default const Navigation = () =>{
         </div>
     );
 };
+export default Navigation;
