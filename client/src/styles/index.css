@@ -124,3 +124,8 @@ nav{
   display: inline-block;
   width:100%;
 }
+.image{
+  width: 90vw;
+  height: 90vh;
+  margin: auto;
+}
