@@ -26,6 +26,7 @@ import '../styles/index.css'
         <a className="navbar-brand" href="bla">Navbar</a>
         <ul className='' >
         <div className='nav-link-container'>
+        <a className={this.state.class=== 'home' ? 'active nav-item' : 'nav-item'}  onClick={this.clickHandler} name='home'>home</a>
         <a className={this.state.class=== 'add-contents' ? 'active nav-item' : 'nav-item'}  onClick={this.clickHandler} name='add-contents'>add contents</a>
         <a className={this.state.class=== 'categories' ? 'active nav-item' : 'nav-item'}  onClick={this.clickHandler} name='categories'>categories</a>
         <a className={this.state.class=== 'about' ? 'active  nav-item' : 'nav-item'}  onClick={this.clickHandler} name='about'>about</a>
@@ -37,5 +38,3 @@ import '../styles/index.css'
     );
   }
 };
-// <a className='' onClick={this.clickHandler}>bla2</a>
-// <a className='' onClick={this.clickHandler}>bla3</a>
