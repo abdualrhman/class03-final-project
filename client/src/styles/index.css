@@ -106,3 +106,21 @@ i {
   margin-left: 10%;
   margin-top: 20px;
 }
+.brand{
+  float: none;
+  display: flex;
+  flex-direction: row;
+  background-color: #212323;
+  color:#fff;
+}
+.active{
+  border-bottom:3px solid #3CDCB9;
+}
+.nav-item{
+  padding-bottom: 24px;
+  margin:0 15px ;
+}
+nav{
+  display: inline-block;
+  width:100%;
+}
