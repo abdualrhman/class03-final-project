@@ -124,7 +124,6 @@ export default class ItemList extends Component {
           </label>
         </div>
           <div className="list-container ">
-            {console.log(this.state.url)}
             {//if the value in state is null, we don't render anything
             value &&
               (value.length) ?

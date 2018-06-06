@@ -39,10 +39,10 @@ export default class CategoryManeger extends Component {
           <Link  to={`/list?category_id=${a.id}`}>
             <button className='btn category-btn'>
             {a.name}
-            {a.id===1 && <i className="fas fa-code"></i>}
-            {a.id===2 && <i className="fab fa-node-js"></i>}
-            {a.id===3 && <i className="fas fa-database"></i>}
-            {a.id===4 && <i className="fas fa-sitemap"></i>}
+            {a.id===1 && <i className="fas fa-code icon"></i>}
+            {a.id===2 && <i className="fab fa-node-js icon"></i>}
+            {a.id===3 && <i className="fas fa-database icon"></i>}
+            {a.id===4 && <i className="fas fa-sitemap icon"></i>}
             </button>
             {console.log(a)}
           </Link>
