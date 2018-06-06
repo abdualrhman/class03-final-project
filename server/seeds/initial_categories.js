@@ -1,4 +1,4 @@
-
+// 
 // exports.seed = function(knex, Promise) {
 //   return knex('category').del()
 //     .then(function () {
@@ -6,7 +6,7 @@
 //         {id:1,name: 'Webdesign'},
 //         {id:2, name: 'NodeJS'},
 //         {id:3, name: 'Database'},
-//         {id:4,name: 'Architecture' }
+//         {name: 'Architecture' }
 //       ]);
 //     });
 // };
