@@ -2,6 +2,7 @@
 const fs = require('fs');
 const mysql = require('mysql');
 
+
 module.exports = {
   development: {
     client: 'mysql',
