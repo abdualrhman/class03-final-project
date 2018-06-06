@@ -110,19 +110,24 @@ i {
   float: none;
   display: flex;
   flex-direction: row;
-  background-color: #212323;
-  color:#fff;
+  background-color: #6b5775
+;
+  height: 8vh;
+  color : #fff;
+}
+.nav-item{
+  padding-bottom: 21px;
+  margin:0 15px;
+}
+
+.nav-list{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .active{
   border-bottom:3px solid #3CDCB9;
-}
-.nav-item{
-  padding-bottom: 24px;
-  margin:0 15px ;
-}
-nav{
-  display: inline-block;
-  width:100%;
 }
 .image{
   width: 90vw;
