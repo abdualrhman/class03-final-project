@@ -17,7 +17,18 @@ exports.seed = function(knex, Promise) {
         { title: 'FLEXBOX FROGGY',
         description : 'welcome to Flexbox Froggy, a game where you help Froggy and friends by writing CSS code! ',
         link:
-        'https://youtu.be/vEROU2XtPR8', type_id: '1', difficulty_id:'2', category_id:'1'},
+        'https://youtu.be/vEROU2XtPR8', type_id: '1', difficulty_id:'2', category_id:'1'
+        },
+        { title: 'How it feels to learn JavaScript in 2016',
+        description : 'The following is inspired by the article “It’s the future” from Circle CI. This piece is just an opinion, and like any JavaScript framework, it shouldn’t be taken too seriously.',
+        link:
+        'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f', type_id: '1', difficulty_id:'1', category_id:'1'
+        },
+        { title: 'How it feels to learn JavaScript in 2016',
+        description : 'Welcome to the first Google Developer Group Cloud in Copenhagen. This is really exciting as this will be a group focusing on the many things that happen in Cloud and on the Google Cloud platform',
+        link:
+        'https://www.meetup.com/Google-Cloud-Developer-Community-Copenhagen/events/249495883', type_id: '3', difficulty_id:'1', category_id:'3'
+        },
       ]);
     });
 };
