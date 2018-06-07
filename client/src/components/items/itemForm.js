@@ -16,7 +16,7 @@ import Selectbutton from './selectButton.js'
           {/* the Category selection */}
             <Selectbutton
               changeHandler={this.props.categoryHandler}
-              inputName='category' name='category' value={['Webdesign', 'NodeJS', 'Database', 'Architecture']}
+              inputName='category' name='category' value={['Webdesign', 'NodeJS', 'Database','Git', 'Architecture']}
              />
             {/* the type selection */}
 
