@@ -16,19 +16,19 @@ import Selectbutton from './selectButton.js'
           {/* the Category selection */}
             <Selectbutton
               changeHandler={this.props.categoryHandler}
-              inputName='category' name='Category' value={['Webdesign', 'NodeJS', 'Database', 'Architecture']}
+              inputName='category' name='category' value={['Webdesign', 'NodeJS', 'Database','Git', 'Architecture']}
              />
             {/* the type selection */}
 
               <Selectbutton
                 changeHandler={this.props.typeHandler}
-                inputName='type' name='Type' value={['video', 'article', 'other']}
+                inputName='type' name='type' value={['video', 'article', 'other']}
                />
             {/* the difficulty selection */}
 
             <Selectbutton
               changeHandler={this.props.difficultyHandler}
-              inputName='Difficulty' name='difficulty' value={['Amateur', 'World Class', 'Legendary']}
+              inputName='difficulty' name='difficulty' value={['Amateur', 'World Class', 'Legendary']}
              />
             {/* the link input */}
 

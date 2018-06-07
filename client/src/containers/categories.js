@@ -42,7 +42,8 @@ export default class CategoryManeger extends Component {
             {a.id===1 && <i className="fas fa-code icon"></i>}
             {a.id===2 && <i className="fab fa-node-js icon"></i>}
             {a.id===3 && <i className="fas fa-database icon"></i>}
-            {a.id===4 && <i className="fas fa-sitemap icon"></i>}
+            {a.id===4 && <i className="fas fa-code-branch icon"></i>}
+            {a.id===5 && <i className="fas fa-sitemap icon"></i>}
             </button>
             {console.log(a)}
           </Link>

@@ -107,8 +107,8 @@ export default class ItemList extends Component {
             Type<br />
             <select value={this.state.type_id} onChange={this.filterHandler} name='type_id'>
               <option value="0">all</option>
-              <option value="1">article</option>
-              <option value="2">video</option>
+              <option value="1">video</option>
+              <option value="2">article</option>
               <option value="3">other</option>
             </select>
           </label>

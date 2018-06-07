@@ -20,9 +20,11 @@ import '../../styles/index.css';
   // this function the forms input changes
   changeHandler(event){
     const {name, value}=event.target;
+    console.log(name);
+    console.log(value);
     this.setState({
       [name] : value
-    })
+    }, ()=>{console.log(this.state)})
   }
   // this function submits value in database
   submitFunc(event){
