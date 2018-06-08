@@ -128,7 +128,7 @@ export default class ItemList extends Component {
             value &&
               (value.length) ?
               (
-                <div>
+                <div className='content-container'>
                   {value.map(a => {
                     const index = value.indexOf(a);
                     return (
