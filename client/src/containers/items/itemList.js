@@ -135,7 +135,7 @@ export default class ItemList extends Component {
                       <div key={index} className="listItems">
                         <div className="item-content">
                           <div className="bla">
-                            <Link to={`/item/${a.id}`}>
+                            <Link className='link' to={`/item/${a.id}`}>
                               <h3 className="link">
                                 <b>{a.title}</b>
                               </h3>

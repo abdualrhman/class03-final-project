@@ -36,7 +36,7 @@ export default class CategoryManeger extends Component {
           const index = value.indexOf(a)
           return (
           <div key={index} className='categoty-btn'>
-          <Link  to={`/list?category_id=${a.id}`}>
+          <Link className='link' to={`/list?category_id=${a.id}`}>
             <button className='btn category-btn'>
             {a.name}
             {a.id===1 && <i className="fas fa-code icon"></i>}
