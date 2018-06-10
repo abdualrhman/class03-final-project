@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../../components/rateButton/rating.js";
 import Selectbutton from "../../components/items/selectButton.js";
+import '../../styles/loader.css'
 
 export default class ItemList extends Component {
   constructor(props) {
@@ -10,6 +11,8 @@ export default class ItemList extends Component {
       value: null,
       type_id: 0,
       difficulty_id:0,
+      loading : true,
+      noItem:false,
       url: `/list${this.props.location.search}`
     };
     //binding the functions
@@ -21,7 +24,7 @@ export default class ItemList extends Component {
   }
   //rendering the data after mounting
   componentDidMount() {
-    this.fetchData();
+    setTimeout(this.fetchData, 1000);
   }
   //getting the data from the database
   fetchData() {
@@ -33,7 +36,7 @@ export default class ItemList extends Component {
         return response.json();
       })
       .then(data => {
-        me.setState({value: data});
+        me.setState({value: data, loading : false});
       })
       .catch(console.log);
   }
@@ -124,18 +127,41 @@ export default class ItemList extends Component {
           </label>
         </div>
           <div className="list-container ">
+            {!this.state.loading && value.lingth > 0 && <h1 style={{marginTop: '125px'}}>No items to show...</h1>}
+          {
+            this.state.loading &&
+              <div className="windows8">
+            	<div className="wBall" id="wBall_1">
+            		<div className="wInnerBall"></div>
+            	</div>
+            	<div className="wBall" id="wBall_2">
+            		<div className="wInnerBall"></div>
+            	</div>
+            	<div className="wBall" id="wBall_3">
+            		<div className="wInnerBall"></div>
+            	</div>
+            	<div className="wBall" id="wBall_4">
+            		<div className="wInnerBall"></div>
+            	</div>
+            	<div className="wBall" id="wBall_5">
+            		<div className="wInnerBall"></div>
+            	</div>
+            </div>
+          }
+          {console.log(this.state.value)}
             {//if the value in state is null, we don't render anything
             value &&
-              (value.length) ?
+              (value.length) && !this.state.loading ?
               (
-                <div>
+                <div className='content-container'>
                   {value.map(a => {
                     const index = value.indexOf(a);
                     return (
                       <div key={index} className="listItems">
+
                         <div className="item-content">
                           <div className="bla">
-                            <Link to={`/item/${a.id}`}>
+                            <Link className='link' to={`/item/${a.id}`}>
                               <h3 className="link">
                                 <b>{a.title}</b>
                               </h3>
@@ -155,8 +181,9 @@ export default class ItemList extends Component {
                     );
                   })}
                 </div>
-              ):
-              <h3>no items to show...</h3>
+              )
+              :
+              !this.state.loading && <h1 style={{marginTop: '125px'}}>No items to show...</h1>
             }
             </div>
     </div>
