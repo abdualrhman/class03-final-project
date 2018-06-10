@@ -9,12 +9,18 @@ knex.on( 'query', function( queryData ) {
 });
 
 router.get("/:id", (req, res) => {
-  return knex().from('items').select()
-    .where({'items.id': req.params.id})
-    .then( function(data) {
-      const [newData]= data
-      res.send(newData);
-    });
+  // return knex().from('items').select()
+  //   .where({'items.id': req.params.id})
+  //   .then( function(data) {
+  //     const [newData]= data
+  //     res.send(newData);
+  //   });
+  return knex('items').select('items.id', 'items.link', 'items.title', 'items.category_id', 'items.description', 'category.name as category_name', 'category.id as category_table_id').from('items').innerJoin('category', 'items.category_id', 'category.id')
+  .where({'items.id': req.params.id})
+  .then( function(data) {
+    const [newData]= data
+    res.send(newData);
+  });
 });
 
 router.get('/', function(req, res, next) {
