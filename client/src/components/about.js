@@ -22,7 +22,6 @@ import '../styles/index.css';
         <a href='https://www.linkedin.com/in/ramadan46/'><i class="fab fa-linkedin"></i></a>
         <a href='https://github.com/abdualrhman'><i class="fab fa-github"></i></a>
         </div>
-
       </div>
     );
   }
