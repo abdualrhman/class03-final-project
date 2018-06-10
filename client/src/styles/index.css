@@ -195,3 +195,39 @@ i {
   margin-top: 300px;
   text-align: center;
 }
+.footer{
+  /* height: 25vh; */
+
+  position: absolute;
+  display: flex;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #1C1E23;
+  /* text-align: center; */
+  height: 17vh;
+  color: white;
+  float: none;
+  width: 100%;
+
+}
+.footer-txt{
+  margin-top: 53px;
+margin-left: 350px;
+}
+.footer .link{
+  color:white;
+}
+.about{
+  margin-left: 15px;
+  text-align: center;
+  display: flex;
+}
+.rounded-circle{
+  height: 54px;
+  width: 54px;
+}
+.finale{
+  margin-left:25px;
+}

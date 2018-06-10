@@ -27,10 +27,10 @@ import '../styles/index.css'
         <a href='/' className={this.state.class=== '' ? 'active nav-item' : 'nav-item'} onClick={this.clickHandler} name='home'>home</a>
         <a href='/categories' className={this.state.class=== 'categories' ? 'active nav-item' : 'nav-item'}  onClick={this.clickHandler} name='categories'>categories</a>
         <a href='/add-contents' className={this.state.class=== 'add-contents' ? 'active nav-item' : 'nav-item'}  onClick={this.clickHandler} name='add-contents'>add contents</a>
-        <a href='/about' className={this.state.class=== 'about' ? 'active  nav-item' : 'nav-item'}  onClick={this.clickHandler} name='about'>about</a>
         </ul>
         </div>
         </div>
     );
   }
 };
+//        <a href='/about' className={this.state.class=== 'about' ? 'active  nav-item' : 'nav-item'}  onClick={this.clickHandler} name='about'>about</a>
