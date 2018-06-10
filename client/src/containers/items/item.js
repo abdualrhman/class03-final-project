@@ -55,7 +55,7 @@ export default class Item extends Component {
           </div>
           <div className='item-buttons-container'>
           {/*back to list button*/}
-          <Link to='/categories'>
+          <Link to={`/list?category_id=${value.category_id}`}>
           <button className='btn item-buttons btn-success'>back to the list</button>
           </Link>
           {/*visit the site button*/}
