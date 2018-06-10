@@ -56,8 +56,9 @@ p{
   margin:10px
 }
 .item-container{
+  padding-bottom: 20px;
   width: 50%;
-  margin:5% auto;
+  margin:100px auto;
   border: 0px solid rgba(123, 123, 123, 0.498039);
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
@@ -65,15 +66,18 @@ p{
   font-weight: 400;
 }
 .item-buttons-container{
+  margin-top: 50px;
+  padding-top: 10px;
   display: flex;
   flex-direction: row;
-justify-content: space-around;
-border-bottom: 1px solid #777777;
+  justify-content: space-around;
+  border-top: 1px solid #afaeae;
 }
 .item-buttons-container a:visited{color: white;}
 .item-buttons {
-  margin-bottom: 10px;
-margin-top: -20px;
+
+/* margin-bottom: 10px;
+margin-top: -20px; */
 }
 .description{
   font-size: 17px;

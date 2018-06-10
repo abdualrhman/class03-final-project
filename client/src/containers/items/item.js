@@ -35,11 +35,24 @@ export default class Item extends Component {
     const {value} = this.state;
     return (
       <div className='item-container jumbotron'>
-      {value&&console.log(value.link)}
+      {value&&console.log(value)}
       {
         value
         &&
         <div>
+          <div>
+          <h2>{value.title}</h2>
+          <br/>
+          <p>category</p>
+          <p style={{fontWeight: 'bold', fontSize : '20px'}}>{value.category_name}</p>
+          <br/>
+          <p>Description</p>
+          <p className='description'>
+           {value.description ?
+            value.description :
+            <p>no description...</p>
+          }</p>
+          </div>
           <div className='item-buttons-container'>
           {/*back to list button*/}
           <Link to='/categories'>
@@ -47,18 +60,6 @@ export default class Item extends Component {
           </Link>
           {/*visit the site button*/}
           <a className='btn item-buttons btn-success' target='_blank' href={value.link}>visit wedsite</a>
-          </div>
-          <div>
-          <p>title</p>
-          <h2>{value.title}</h2>
-          <br/>
-          <p>Description</p>
-          <h2>{value.category}</h2>
-          <p className='description'>
-           {value.description ?
-            value.description :
-            <p>no description...</p>
-          }</p>
           </div>
         </div>
       }
