@@ -4,6 +4,21 @@ body {
   font-family: 'Montserrat Alternates', sans-serif;
   background: rgb(238,238,238);
 }
+@media (min-width: 500px) {
+  .filter-container{
+    width:25%;
+     /* padding-left:-30px; */
+    margin-top: 100px;
+      padding-left:10%;
+  }
+}
+@media (max-width: 500px) {
+  .filter-container{
+    margin-top: 100px;
+    width:25%;
+    /* padding-left:30px; */
+  }
+}
 .Form {
   width: 75vh;
   margin:67px auto;
@@ -12,28 +27,28 @@ body {
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
   border-radius: 4px;
-  box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
+  box-shadow: rgba(0,0,0,0.3) 2px 1px 2px 0px;
   padding: 15px;
 }
 
 .listItems{
   width: 100%;
-  margin: 20px;
+  margin:0 0 20px;
 
 }
 .content-container{
   margin-top: 100px;
 }
 .item-content{
+  min-width: 250px;
 height: 100%;
 border: 0px solid rgba(123, 123, 123, 0.498039);
 border-radius: 4px;
 color: rgb(153, 153, 153);
-
 font-size: 24px;
 font-weight: 400;
 background-color: rgb(255, 255, 255);
-box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
+box-shadow: rgba(0,0,0,0.3) 2px 1px 2px 0px;
 padding: 10px;
 }
 .header{
@@ -87,16 +102,17 @@ margin-top: -20px; */
   width: 50%;
   height: 100%;
   background-color: rgb(255, 255, 255);
-  box-shadow: rgba(0,0,0,0.4) 0px 2px 2px 0px;
+  box-shadow: rgba(0,0,0,0.4) 2px 2px 2px 0px;
   border-radius: 9px;
   font-weight: 400;
   border: 0px solid rgba(123, 123, 123, 0.498039);
   padding: 50px;
-  /* margin-top: ; */
+  min-width: 300px;
 }
 .category-btn{
   display: block;
   width:100%;
+  min-width: 150px;
   height:100px;
   margin: 15px 0px;
   border:1px solid #000 ;
@@ -115,11 +131,11 @@ i {
 .div-container{
   display: flex;
 }
-.filter-container{
+/* .filter-container{
   width:25%;
   padding-left:10%;
   margin-top: 100px;
-}
+} */
 .brand{
   overflow: hidden;
   position: fixed;

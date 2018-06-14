@@ -8,9 +8,9 @@ export default class ItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
-      type_id: 0,
-      difficulty_id:0,
+      itemList: null,
+      type_id: '',
+      difficulty_id:'',
       loading : true,
       noItem:false,
       url: `/list${this.props.location.search}`
@@ -29,34 +29,34 @@ export default class ItemList extends Component {
   //getting the data from the database
   fetchData() {
     const me = this;
-    fetch(this.state.url, {
+    fetch(`/list${this.props.location.search}&difficulty_id=${this.state.difficulty_id}&type_id=${this.state.type_id}`, {
       method: "get"
     })
       .then(response => {
         return response.json();
       })
       .then(data => {
-        me.setState({value: data, loading : false});
+        me.setState({itemList: data, loading : false});
       })
       .catch(console.log);
   }
   // the rate up function
   rateUpFunc(index) {
-    const { value } = this.state;
-    const item = value[index];
+    const { itemList } = this.state;
+    const item = itemList[index];
     const plusItem = ++item.rate_up;
     const newItem = { ...item, rate_up: plusItem };
-    const newList = [...value];
+    const newList = [...itemList];
     newList[index].rate_up = plusItem;
     this.patchData(newItem, newList);
   }
   // the rate down function
   rateDownFunc(index) {
-    const { value } = this.state;
-    const item = value[index];
+    const { itemList } = this.state;
+    const item = itemList[index];
     const plusItem = ++item.rate_down;
     const newItem = { ...item, rate_down: plusItem };
-    const newList = [...value];
+    const newList = [...itemList];
     newList[index].rate_down = plusItem;
     this.patchData(newItem, newList);
   }
@@ -71,7 +71,7 @@ export default class ItemList extends Component {
     })
       .then(() => {
         const me = this;
-        me.setState({ value: newList }, () => console.log(this.state.value));
+        me.setState({ itemList: newList }, () => console.log(this.state.itemList));
       })
       .catch(console.log);
   }
@@ -91,7 +91,7 @@ export default class ItemList extends Component {
     } else {
       this.setState(
         {
-          [name]: value,
+          [name]: '',
           url: `/list${this.props.location.search}`
         },
         () => {
@@ -102,9 +102,10 @@ export default class ItemList extends Component {
   }
 
   render() {
-    const { value } = this.state;
+    const { itemList } = this.state;
     return (
       <div className='div-container'>
+      {console.log(this.state.url)}
         <div className='filter-container'>
           <label>
             Type<br />
@@ -127,7 +128,6 @@ export default class ItemList extends Component {
           </label>
         </div>
           <div className="list-container ">
-            {!this.state.loading && value.lingth > 0 && <h1 style={{marginTop: '125px'}}>No items to show...</h1>}
           {
             this.state.loading &&
               <div className="windows8">
@@ -148,14 +148,14 @@ export default class ItemList extends Component {
             	</div>
             </div>
           }
-          {console.log(this.state.value)}
-            {//if the value in state is null, we don't render anything
-            value &&
-              (value.length) && !this.state.loading ?
+          {console.log(itemList)}
+            {//if the itemList in state is null, we don't render anything
+            itemList &&
+              (itemList.length) && !this.state.loading ?
               (
                 <div className='content-container'>
-                  {value.map(a => {
-                    const index = value.indexOf(a);
+                  {itemList.map(a => {
+                    const index = itemList.indexOf(a);
                     return (
                       <div key={index} className="listItems">
 
