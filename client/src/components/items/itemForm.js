@@ -20,7 +20,7 @@ import Selectbutton from './selectButton.js'
              />
             {/* the type selection */}
 
-              <Selectbutton
+              <Selectbutton className='bla'
                 changeHandler={this.props.typeHandler}
                 inputName='type' name='type' value={['video', 'article', 'other']}
                />
@@ -43,13 +43,13 @@ import Selectbutton from './selectButton.js'
 
             <div>
             <label>Link: <br/>
-            <input  name='link' className='err' type='text' onChange={this.props.linkHandler} required/>
+            <input className='formItem'  name='link' type='text' onChange={this.props.linkHandler} required/>
             </label>
             </div>
             {/* the Description input */}
             <div>
             <label>Description:<br/>
-            <textarea className='err'
+            <textarea className='formItem'
               name='description'
               rows="4"
               cols="37"
@@ -61,7 +61,7 @@ import Selectbutton from './selectButton.js'
             </label>
             </div>
             {/*the submit button*/}
-            <input className='btn btn-success btn-form-submit' type="submit" value="Submit"/>
+            <input className='formItem btn btn-success btn-form-submit' type="submit" value="Submit"/>
           </form>
         </div>
       </div>

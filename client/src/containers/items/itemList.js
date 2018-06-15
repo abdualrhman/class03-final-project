@@ -116,7 +116,6 @@ export default class ItemList extends Component {
               <option value="3">other</option>
             </select>
           </label>
-          <br/>
           <label>
             difficulty<br />
             <select value={this.state.difficulty_id} onChange={this.filterHandler} name='difficulty_id'>
@@ -157,7 +156,7 @@ export default class ItemList extends Component {
                   {itemList.map(a => {
                     const index = itemList.indexOf(a);
                     return (
-                      <div key={index} className="listItems">
+                      <div key={index}>
 
                         <div className="item-content">
                           <div className="bla">
