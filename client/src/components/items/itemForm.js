@@ -32,11 +32,12 @@ import Selectbutton from './selectButton.js'
              />
             {/* the link input */}
 
-            <div className='formItem'>
+            <div>
             <label>title:<br/>
               <input type='text'
-              name='title'
-                onChange={this.props.titleHandler} required/>
+              name='title' className='formItem'
+                onChange={this.props.titleHandler} required
+                />
             </label>
             </div>
             {/* the title input */}

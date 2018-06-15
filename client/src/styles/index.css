@@ -12,13 +12,21 @@ body {
 .Form {
  width: 75vh;
  margin:67px auto;
- padding:10px;
  line-height: 35px;
  background-color: rgb(255, 255, 255);
  box-shadow: rgba(0,0,0,0.2) 0px 1px 2px 0px;
  border-radius: 4px;
  box-shadow: rgba(0,0,0,0.3) 2px 1px 2px 0px;
  padding: 15px;
+ min-width: 250px;
+
+}
+.formItem{
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 
@@ -250,7 +258,7 @@ text-align: center;
   flex-direction: column;
 }
 .personal-name{
-  margin:0 20px 0 0;
+  margin:0 15px;
 }
 
 @media (min-width: 770px) {
