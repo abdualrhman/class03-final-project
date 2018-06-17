@@ -30,13 +30,6 @@ body {
 
 
 
-.paginationComp{
-display: flex;
-}
-.pagination{
-  text-align: center;
-
-}
 /*
 *
   ITEMS LIST PAGE
@@ -99,9 +92,9 @@ p{
 }
 .item-buttons-container a:visited{color: white;}
 
-.description{
+/* .description{
  font-size: 17px;
-}
+} */
 
 
 /*
