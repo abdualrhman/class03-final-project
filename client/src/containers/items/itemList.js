@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../../components/rateButton/rating.js";
 import Selectbutton from "../../components/items/selectButton.js";
-import '../../styles/loader.css'
+import '../../styles/loader.css';
+import Loader from "../../components/loader.js"
+import ReactPaginate from 'react-paginate';
 
 export default class ItemList extends Component {
   constructor(props) {
@@ -10,10 +12,11 @@ export default class ItemList extends Component {
     this.state = {
       itemList: null,
       type_id: '',
+      offset: 0,
+      page :1,
       difficulty_id:'',
       loading : true,
       noItem:false,
-      url: `/list${this.props.location.search}`
     };
     //binding the functions
     this.fetchData = this.fetchData.bind(this);
@@ -21,6 +24,7 @@ export default class ItemList extends Component {
     this.rateDownFunc = this.rateDownFunc.bind(this);
     this.patchData = this.patchData.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
+    this.handlePageClick=this.handlePageClick.bind(this)
   }
   //rendering the data after mounting
   componentDidMount() {
@@ -29,14 +33,14 @@ export default class ItemList extends Component {
   //getting the data from the database
   fetchData() {
     const me = this;
-    fetch(`/list${this.props.location.search}&difficulty_id=${this.state.difficulty_id}&type_id=${this.state.type_id}`, {
+    fetch(`/list${this.props.location.search}&difficulty_id=${this.state.difficulty_id}&type_id=${this.state.type_id}&limit=10&page=${this.state.page}`, {
       method: "get"
     })
       .then(response => {
         return response.json();
       })
       .then(data => {
-        me.setState({itemList: data, loading : false});
+        me.setState({itemList: data.items, loading : false, pageCount: Math.ceil(data.count / data.limit)});
       })
       .catch(console.log);
   }
@@ -100,12 +104,20 @@ export default class ItemList extends Component {
       );
     }
   }
+  handlePageClick(data){
+    let selected = data.selected;
+    let offset = Math.ceil(selected * 10);
+    console.log(data.selected)
+    this.setState({offset: offset, page: data.selected + 1}, () => {
+      this.fetchData();
+    });
+  }
 
   render() {
     const { itemList } = this.state;
     return (
       <div className='div-container'>
-      {console.log(this.state.url)}
+      {console.log(window.location)}
         <div className='filter-container'>
           <label>
             Type<br />
@@ -128,24 +140,7 @@ export default class ItemList extends Component {
         </div>
           <div className="list-container ">
           {
-            this.state.loading &&
-              <div className="windows8">
-            	<div className="wBall" id="wBall_1">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_2">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_3">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_4">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_5">
-            		<div className="wInnerBall"></div>
-            	</div>
-            </div>
+            this.state.loading && <Loader/>
           }
           {console.log(itemList)}
             {//if the itemList in state is null, we don't render anything
@@ -179,6 +174,19 @@ export default class ItemList extends Component {
                       </div>
                     );
                   })}
+                  <ReactPaginate
+                     previousLabel={"previous"}
+                     nextLabel={"next"}
+                     breakLabel={<a>...</a>}
+                     breakClassName={"break-me"}
+                     pageCount={this.state.pageCount}
+                     marginPagesDisplayed={2}
+                     pageRangeDisplayed={5}
+                     onPageChange={this.handlePageClick}
+                     containerClassName={"pagination"}
+                     subContainerClassName={"page-item"}
+                     activeClassName={"page-item"}
+                  />
                 </div>
               )
               :

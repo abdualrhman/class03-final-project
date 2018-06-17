@@ -8,7 +8,6 @@ body {
 /*
   ADD CONTENTS PAGE
 */
-
 .Form {
  width: 75vh;
  margin:67px auto;
@@ -30,6 +29,14 @@ body {
 }
 
 
+
+.paginationComp{
+display: flex;
+}
+.pagination{
+  text-align: center;
+
+}
 /*
 *
   ITEMS LIST PAGE
@@ -299,5 +306,4 @@ text-align: center;
  .Form {
   width: 50vh;
  }
-
 }
