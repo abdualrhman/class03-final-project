@@ -1,4 +1,4 @@
-# class03-final-project
+# share-content-platform
 Main repository for the final project for Class 03
 
 Note that the project is split into two sub-projects. One for the [client](/client) and one for the [server](server). Further documentation in these folders.
