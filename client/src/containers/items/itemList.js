@@ -155,7 +155,6 @@ export default class ItemList extends Component {
                                 <b>{a.title}</b>
                               </h3>
                               <p className="link">{a.link}</p>
-                              <p>{a.id}</p>
                             </Link>
                           </div>
                           {/*the rate component*/}

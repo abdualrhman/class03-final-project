@@ -5,7 +5,7 @@ var knex  = require('../helpers/knex');
 
 // knex middleware for logging
 knex.on( 'query', function( queryData ) {
-    console.log(`KNEX Operation: ${ queryData.sql }`);
+    console.log(`KNEX Operation`);
 });
 
 router.get("/:id", (req, res) => {
@@ -45,12 +45,12 @@ router.get('/', function(req, res, next) {
   }
 
   sqlQuery.then(data =>{
-    console.log(data)
+
     return count = data.length
   }).then(data=>{
     sqlQuery.offset(qOffset).limit(qLimit)
     .then( function(data){
-      console.log(data.length)
+
 
       const newData = {
         "count": count, "page": qPage, "offset": qOffset, "limit": qLimit, "pageStart": pageStart, "items": [...data]
