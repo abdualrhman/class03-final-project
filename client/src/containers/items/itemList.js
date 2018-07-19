@@ -105,7 +105,8 @@ export default class ItemList extends Component {
     console.log(`${name}: ${value}`)
 
     this.setState({
-      [name]: value
+      [name]: value,
+      page: 1
     },()=>{this.fetchData()})
   }
 
