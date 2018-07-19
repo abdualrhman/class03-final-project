@@ -10,15 +10,14 @@ export default class ItemList extends Component {
     super(props);
     this.state = {
       itemList: null,
-      type_id: '',
+      type_id: 0,
+      difficulty_id:0,
       offset: 0,
       limit : 10,
       page :1,
-      difficulty_id:'',
-      type_id: '',
       loading : true,
+      qurl: ``
     };
-    //binding the functions
     this.fetchData = this.fetchData.bind(this);
     this.rateUpFunc = this.rateUpFunc.bind(this);
     this.rateDownFunc = this.rateDownFunc.bind(this);
@@ -28,12 +27,33 @@ export default class ItemList extends Component {
   }
   //rendering the data after mounting
   componentDidMount() {
-    setTimeout(this.fetchData, 500);
+    this.fetchData()
   }
   //getting the data from the database
   fetchData() {
+    const {difficulty_id, type_id} = this.state;
+    const params = new URLSearchParams(this.props.location.search)
+    let category = params.get('category_id');
+    let qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}&page=${this.state.page}&limit=${this.state.limit}`;
+    if (this.state.difficulty_id <1){
+       qurl2 = `category_id=${category}&type_id=${type_id}&page=${this.state.page}&limit=${this.state.limit}`
+    }
+    if (this.state.type_id <1){
+       qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&page=${this.state.page}&limit=${this.state.limit}`
+    }
+    if (this.state.type_id <1 && this.state.difficulty_id <1){
+       qurl2 = `category_id=${category}&page=${this.state.page}&limit=${this.state.limit}`
+    }
+
+    this.setState({
+      qurl : qurl2
+    },()=>{this.props.history.push({
+        search: this.state.qurl
+    })})
     const me = this;
-    fetch(`/list${this.props.location.search}&difficulty_id=${this.state.difficulty_id}&type_id=${this.state.type_id}&limit=${this.state.limit}&page=${this.state.page}`, {
+        console.log('location: '+this.props.location.search)
+        const url = `/list?${qurl2}`
+       fetch(url, {
       method: "get"
     })
       .then(response => {
@@ -49,7 +69,7 @@ export default class ItemList extends Component {
     const { itemList } = this.state;
     const item = itemList[index];
     const plusItem = ++item.rate_up;
-    const newItem = { ...item, rate_up: plusItem };
+    const newItem = { ...item, rate_up: plusItem};
     const newList = [...itemList];
     newList[index].rate_up = plusItem;
     this.patchData(newItem, newList);
@@ -79,30 +99,16 @@ export default class ItemList extends Component {
       })
       .catch(console.log);
   }
+
   filterHandler(e) {
     const {name, value}=e.target;
-    if (value != 0) {
-      this.setState(
-        {
-          [name]: value,
-          url: `/list${this.props.location.search}&${[name]}=${value}`
-        },
-        () => {
-          this.fetchData();
-        }
-      );
-    } else {
-      this.setState(
-        {
-          [name]: '',
-          url: `/list${this.props.location.search}`
-        },
-        () => {
-          this.fetchData();
-        }
-      );
-    }
+    console.log(`${name}: ${value}`)
+
+    this.setState({
+      [name]: value
+    },()=>{this.fetchData()})
   }
+
   handlePageClick(data){
     let selected = data.selected;
     let offset = Math.ceil(selected * 10);
@@ -118,10 +124,12 @@ export default class ItemList extends Component {
           <label>
             Type<br />
             <select value={this.state.type_id} onChange={this.filterHandler} name='type_id'>
-              <option value="0">all</option>
+              <option value='0'>all</option>
               <option value="1">video</option>
               <option value="2">article</option>
               <option value="3">other</option>
+              {console.log(`/list${this.props.location.search}&limit=${this.state.limit}&page=${this.state.page}`)}
+              {console.log(this.state)}
             </select>
           </label>
           <label>
@@ -133,6 +141,7 @@ export default class ItemList extends Component {
               <option value="3">Legendary</option>
             </select>
           </label>
+          <button>click me</button>
         </div>
           <div className="list-container ">
           {
@@ -170,6 +179,8 @@ export default class ItemList extends Component {
                     );
                   })}
                   <Pagination pageCount={this.state.pageCount} handlePageClick={this.handlePageClick}/>
+                  {console.log(this.state)}
+                  {console.log(this.props.location.search)}
                 </div>
               )
               :
