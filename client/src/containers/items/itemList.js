@@ -1,62 +1,89 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../../components/rateButton/rating.js";
-import Selectbutton from "../../components/items/selectButton.js";
-import '../../styles/loader.css'
+import '../../styles/loader.css';
+import Loader from "../../components/loader.js"
+import Pagination from '../../components/pagination.js'
 
 export default class ItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
+      itemList: null,
       type_id: 0,
       difficulty_id:0,
+      offset: 0,
+      limit : 10,
+      page :1,
       loading : true,
-      noItem:false,
-      url: `/list${this.props.location.search}`
+      qurl: ``
     };
-    //binding the functions
     this.fetchData = this.fetchData.bind(this);
     this.rateUpFunc = this.rateUpFunc.bind(this);
     this.rateDownFunc = this.rateDownFunc.bind(this);
     this.patchData = this.patchData.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
+    this.handlePageClick=this.handlePageClick.bind(this);
   }
   //rendering the data after mounting
   componentDidMount() {
-    setTimeout(this.fetchData, 1000);
+    this.fetchData()
   }
   //getting the data from the database
   fetchData() {
+    const {difficulty_id, type_id, page} = this.state;
+    const params = new URLSearchParams(this.props.location.search)
+    let category = params.get('category_id');
+    let qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}`;
+    if (this.state.difficulty_id <1){
+       qurl2 = `category_id=${category}&type_id=${type_id}`
+    }
+    if (this.state.type_id <1){
+       qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}`
+    }
+    if (this.state.type_id <1 && this.state.difficulty_id <1){
+       qurl2 = `category_id=${category}`
+    }
+    if (page > 1){
+      qurl2 = qurl2+`&page=${this.state.page}`
+    }
+
+    this.setState({
+      qurl : qurl2
+    },()=>{this.props.history.push({
+        search: this.state.qurl
+    })})
     const me = this;
-    fetch(this.state.url, {
+        console.log('location: '+this.props.location.search)
+        const url = `/list?${qurl2}&limit=${this.state.limit}`
+       fetch(url, {
       method: "get"
     })
       .then(response => {
         return response.json();
       })
       .then(data => {
-        me.setState({value: data, loading : false});
+        me.setState({itemList: data.items, loading : false, pageCount: Math.ceil(data.count / data.limit)});
       })
       .catch(console.log);
   }
   // the rate up function
   rateUpFunc(index) {
-    const { value } = this.state;
-    const item = value[index];
+    const { itemList } = this.state;
+    const item = itemList[index];
     const plusItem = ++item.rate_up;
-    const newItem = { ...item, rate_up: plusItem };
-    const newList = [...value];
+    const newItem = { ...item, rate_up: plusItem};
+    const newList = [...itemList];
     newList[index].rate_up = plusItem;
     this.patchData(newItem, newList);
   }
   // the rate down function
   rateDownFunc(index) {
-    const { value } = this.state;
-    const item = value[index];
+    const { itemList } = this.state;
+    const item = itemList[index];
     const plusItem = ++item.rate_down;
     const newItem = { ...item, rate_down: plusItem };
-    const newList = [...value];
+    const newList = [...itemList];
     newList[index].rate_down = plusItem;
     this.patchData(newItem, newList);
   }
@@ -71,51 +98,44 @@ export default class ItemList extends Component {
     })
       .then(() => {
         const me = this;
-        me.setState({ value: newList }, () => console.log(this.state.value));
+        me.setState({ itemList: newList });
       })
       .catch(console.log);
   }
+
   filterHandler(e) {
     const {name, value}=e.target;
-    if (value != 0) {
-      this.setState(
-        {
-          [name]: value,
-          url: `/list${this.props.location.search}&${[name]}=${value}`
-        },
-        () => {
-          this.fetchData();
-          console.log([name]+' :'+ value)
-        }
-      );
-    } else {
-      this.setState(
-        {
-          [name]: value,
-          url: `/list${this.props.location.search}`
-        },
-        () => {
-          this.fetchData();
-        }
-      );
-    }
+    console.log(`${name}: ${value}`)
+
+    this.setState({
+      [name]: value,
+      page: 1
+    },()=>{this.fetchData()})
   }
 
+  handlePageClick(data){
+    let selected = data.selected;
+    let offset = Math.ceil(selected * 10);
+    this.setState({offset: offset, page: data.selected + 1}, () => {
+      this.fetchData();
+    });
+  }
   render() {
-    const { value } = this.state;
+    const { itemList } = this.state;
     return (
       <div className='div-container'>
         <div className='filter-container'>
           <label>
             Type<br />
             <select value={this.state.type_id} onChange={this.filterHandler} name='type_id'>
-              <option value="0">all</option>
+              <option value='0'>all</option>
               <option value="1">video</option>
               <option value="2">article</option>
               <option value="3">other</option>
+              {console.log(`/list${this.props.location.search}&limit=${this.state.limit}&page=${this.state.page}`)}
+              {console.log(this.state)}
             </select>
           </label>
-          <br/>
           <label>
             difficulty<br />
             <select value={this.state.difficulty_id} onChange={this.filterHandler} name='difficulty_id'>
@@ -127,37 +147,18 @@ export default class ItemList extends Component {
           </label>
         </div>
           <div className="list-container ">
-            {!this.state.loading && value.lingth > 0 && <h1 style={{marginTop: '125px'}}>No items to show...</h1>}
           {
-            this.state.loading &&
-              <div className="windows8">
-            	<div className="wBall" id="wBall_1">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_2">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_3">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_4">
-            		<div className="wInnerBall"></div>
-            	</div>
-            	<div className="wBall" id="wBall_5">
-            		<div className="wInnerBall"></div>
-            	</div>
-            </div>
+            this.state.loading && <Loader/>
           }
-          {console.log(this.state.value)}
-            {//if the value in state is null, we don't render anything
-            value &&
-              (value.length) && !this.state.loading ?
+            {//if the itemList in state is null, we don't render anything
+            itemList &&
+              (itemList.length) && !this.state.loading ?
               (
                 <div className='content-container'>
-                  {value.map(a => {
-                    const index = value.indexOf(a);
+                  {itemList.map(a => {
+                    const index = itemList.indexOf(a);
                     return (
-                      <div key={index} className="listItems">
+                      <div key={index}>
 
                         <div className="item-content">
                           <div className="bla">
@@ -180,6 +181,9 @@ export default class ItemList extends Component {
                       </div>
                     );
                   })}
+                  <Pagination pageCount={this.state.pageCount} handlePageClick={this.handlePageClick}/>
+                  {console.log(this.state)}
+                  {console.log(this.props.location.search)}
                 </div>
               )
               :

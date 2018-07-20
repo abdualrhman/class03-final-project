@@ -33,4 +33,3 @@ import '../styles/index.css'
     );
   }
 };
-//        <a href='/about' className={this.state.class=== 'about' ? 'active  nav-item' : 'nav-item'}  onClick={this.clickHandler} name='about'>about</a>
