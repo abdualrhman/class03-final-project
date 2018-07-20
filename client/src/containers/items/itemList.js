@@ -31,18 +31,21 @@ export default class ItemList extends Component {
   }
   //getting the data from the database
   fetchData() {
-    const {difficulty_id, type_id} = this.state;
+    const {difficulty_id, type_id, page} = this.state;
     const params = new URLSearchParams(this.props.location.search)
     let category = params.get('category_id');
-    let qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}&page=${this.state.page}&limit=${this.state.limit}`;
+    let qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}`;
     if (this.state.difficulty_id <1){
-       qurl2 = `category_id=${category}&type_id=${type_id}&page=${this.state.page}&limit=${this.state.limit}`
+       qurl2 = `category_id=${category}&type_id=${type_id}`
     }
     if (this.state.type_id <1){
-       qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&page=${this.state.page}&limit=${this.state.limit}`
+       qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}`
     }
     if (this.state.type_id <1 && this.state.difficulty_id <1){
-       qurl2 = `category_id=${category}&page=${this.state.page}&limit=${this.state.limit}`
+       qurl2 = `category_id=${category}`
+    }
+    if (page > 1){
+      qurl2 = qurl2+`&page=${this.state.page}`
     }
 
     this.setState({
@@ -52,7 +55,7 @@ export default class ItemList extends Component {
     })})
     const me = this;
         console.log('location: '+this.props.location.search)
-        const url = `/list?${qurl2}`
+        const url = `/list?${qurl2}&limit=${this.state.limit}`
        fetch(url, {
       method: "get"
     })
@@ -142,7 +145,6 @@ export default class ItemList extends Component {
               <option value="3">Legendary</option>
             </select>
           </label>
-          <button>click me</button>
         </div>
           <div className="list-container ">
           {
