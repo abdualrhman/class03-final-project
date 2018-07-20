@@ -43,15 +43,15 @@ export default class Item extends Component {
           <div>
           <h2>{value.title}</h2>
           <br/>
-          <p>category</p>
-          <p style={{fontWeight: 'bold', fontSize : '20px'}}>{value.category_name}</p>
+          <p style={{fontWeight: 'bold', fontSize : '15px'}}>category</p>
+          <p style={{fontWeight: 'bold', fontSize : '25px'}}>{value.category_name}</p>
           <br/>
-          <p>Description</p>
-          <p className='description'>
+          <p style={{fontWeight: 'bold', fontSize : '15px'}}>Description</p>
+          <h4 className='description'>
            {value.description ?
             value.description :
             <p>no description...</p>
-          }</p>
+          }</h4>
           </div>
           <div className='item-buttons-container'>
           {/*back to list button*/}

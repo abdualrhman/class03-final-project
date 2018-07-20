@@ -8,7 +8,6 @@ body {
 /*
   ADD CONTENTS PAGE
 */
-
 .Form {
  width: 75vh;
  margin:67px auto;
@@ -28,6 +27,7 @@ body {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 
 
 /*
@@ -92,9 +92,9 @@ p{
 }
 .item-buttons-container a:visited{color: white;}
 
-.description{
+/* .description{
  font-size: 17px;
-}
+} */
 
 
 /*
@@ -299,5 +299,4 @@ text-align: center;
  .Form {
   width: 50vh;
  }
-
 }
