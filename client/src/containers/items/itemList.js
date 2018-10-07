@@ -10,8 +10,8 @@ export default class ItemList extends Component {
     super(props);
     this.state = {
       itemList: null,
-      type_id: 0,
-      difficulty_id:0,
+      type_id: "",
+      difficulty_id:"",
       offset: 0,
       limit : 10,
       page :1,
@@ -34,28 +34,9 @@ export default class ItemList extends Component {
     const {difficulty_id, type_id, page} = this.state;
     const params = new URLSearchParams(this.props.location.search)
     let category = params.get('category_id');
-    let qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}`;
-    if (this.state.difficulty_id <1){
-       qurl2 = `category_id=${category}&type_id=${type_id}`
-    }
-    if (this.state.type_id <1){
-       qurl2 = `category_id=${category}&difficulty_id=${difficulty_id}`
-    }
-    if (this.state.type_id <1 && this.state.difficulty_id <1){
-       qurl2 = `category_id=${category}`
-    }
-    if (page > 1){
-      qurl2 = qurl2+`&page=${this.state.page}`
-    }
-
-    this.setState({
-      qurl : qurl2
-    },()=>{this.props.history.push({
-        search: this.state.qurl
-    })})
     const me = this;
-        console.log('location: '+this.props.location.search)
-        const url = `/list?${qurl2}&limit=${this.state.limit}`
+        const url = `/list?category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}&limit=${this.state.limit}`
+
        fetch(url, {
       method: "get"
     })
@@ -105,12 +86,19 @@ export default class ItemList extends Component {
 
   filterHandler(e) {
     const {name, value}=e.target;
-    console.log(`${name}: ${value}`)
 
-    this.setState({
-      [name]: value,
-      page: 1
-    },()=>{this.fetchData()})
+    if(value === "0"){
+      this.setState({
+        [name] : ""
+      },()=>{this.fetchData()})
+
+    }else{
+      this.setState({
+        [name]: value,
+        page: 1
+      },()=>{this.fetchData()})
+    }
+
   }
 
   handlePageClick(data){
@@ -132,9 +120,8 @@ export default class ItemList extends Component {
               <option value="1">video</option>
               <option value="2">article</option>
               <option value="3">other</option>
-              {console.log(`/list${this.props.location.search}&limit=${this.state.limit}&page=${this.state.page}`)}
-              {console.log(this.state)}
             </select>
+            {console.log(this.state.difficulty_id)}
           </label>
           <label>
             difficulty<br />
@@ -182,8 +169,6 @@ export default class ItemList extends Component {
                     );
                   })}
                   <Pagination pageCount={this.state.pageCount} handlePageClick={this.handlePageClick}/>
-                  {console.log(this.state)}
-                  {console.log(this.props.location.search)}
                 </div>
               )
               :
