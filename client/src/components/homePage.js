@@ -23,7 +23,7 @@ import '../styles/index.css';
         </div>
         <div className='personal-img'>
         <div className='person'>
-        <img src='https://media.licdn.com/dms/image/C4E03AQHKHn3QMGkbUw/profile-displayphoto-shrink_800_800/0?e=1534377600&v=beta&t=lC1kZnIbDiyP9Nq7JhIic-9Y0dq64TBea2yNAE53SpM' className="rounded-circle"/>
+        <img src='https://media.licdn.com/dms/image/C4E03AQHKHn3QMGkbUw/profile-displayphoto-shrink_800_800/0?e=1544659200&v=beta&t=ucX_dt-C-OintZTCqqCZQ1onRqSdz5xwASO44DsDg7M' className="rounded-circle"/>
         <div className='personal-details'><div className='personal-name'>Mohamed Aldahoul</div>
         <div>
         <a href='https://www.linkedin.com/in/mohamedaldahoul/'><i className="fab fa-linkedin"></i></a>
@@ -33,7 +33,7 @@ import '../styles/index.css';
         </div>
 
           <div className='person'>
-          <img src='https://media.licdn.com/dms/image/C4E03AQEDG6sUrHePCg/profile-displayphoto-shrink_100_100/0?e=1534377600&v=beta&t=invu6PTBfvBJfsSIHxaL8Y7jurNiJRZp86aNB8RzNgc' className="rounded-circle"/>
+          <img src='https://media.licdn.com/dms/image/C4E03AQEDG6sUrHePCg/profile-displayphoto-shrink_200_200/0?e=1544659200&v=beta&t=dmxiQaBsfiH3P8-xu2LVa_ltH1XkuV5rqEiduusz8TI' className="rounded-circle"/>
           <div className='personal-details'><div className='personal-name'>Abdulrahman Ramadan </div>
           <div>
           <a href='https://www.linkedin.com/in/ramadan46/'>
