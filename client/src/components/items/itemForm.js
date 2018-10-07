@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/index.css'
-import {Link} from 'react-router-dom';
 import Selectbutton from './selectButton.js'
 
 
@@ -79,7 +78,3 @@ ItemForm.proptypes={
   typeHandler:PropTypes.func.isRequired
 
 }
-
-// <Link to='/categories'>
-// <input type="button" value='view content'/>
-// </Link>

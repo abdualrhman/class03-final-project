@@ -31,11 +31,11 @@ export default class ItemList extends Component {
   }
   //getting the data from the database
   fetchData() {
-    const {difficulty_id, type_id, page} = this.state;
+    const {difficulty_id, type_id, limit} = this.state;
     const params = new URLSearchParams(this.props.location.search)
     let category = params.get('category_id');
     const me = this;
-        const url = `/list?category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}&limit=${this.state.limit}`
+        const url = `/list?category_id=${category}&difficulty_id=${difficulty_id}&type_id=${type_id}&limit=${limit}`
 
        fetch(url, {
       method: "get"
@@ -121,7 +121,6 @@ export default class ItemList extends Component {
               <option value="2">article</option>
               <option value="3">other</option>
             </select>
-            {console.log(this.state.difficulty_id)}
           </label>
           <label>
             difficulty<br />

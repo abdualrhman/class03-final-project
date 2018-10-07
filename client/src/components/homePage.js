@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import '../styles/index.css';
 
 
@@ -23,7 +22,7 @@ import '../styles/index.css';
         </div>
         <div className='personal-img'>
         <div className='person'>
-        <img src='https://media.licdn.com/dms/image/C4E03AQHKHn3QMGkbUw/profile-displayphoto-shrink_800_800/0?e=1544659200&v=beta&t=ucX_dt-C-OintZTCqqCZQ1onRqSdz5xwASO44DsDg7M' className="rounded-circle"/>
+        <img src='https://media.licdn.com/dms/image/C4E03AQHKHn3QMGkbUw/profile-displayphoto-shrink_800_800/0?e=1544659200&v=beta&t=ucX_dt-C-OintZTCqqCZQ1onRqSdz5xwASO44DsDg7M' className="rounded-circle" alt=""/>
         <div className='personal-details'><div className='personal-name'>Mohamed Aldahoul</div>
         <div>
         <a href='https://www.linkedin.com/in/mohamedaldahoul/'><i className="fab fa-linkedin"></i></a>
@@ -33,7 +32,7 @@ import '../styles/index.css';
         </div>
 
           <div className='person'>
-          <img src='https://media.licdn.com/dms/image/C4E03AQEDG6sUrHePCg/profile-displayphoto-shrink_200_200/0?e=1544659200&v=beta&t=dmxiQaBsfiH3P8-xu2LVa_ltH1XkuV5rqEiduusz8TI' className="rounded-circle"/>
+          <img src='https://media.licdn.com/dms/image/C4E03AQEDG6sUrHePCg/profile-displayphoto-shrink_200_200/0?e=1544659200&v=beta&t=dmxiQaBsfiH3P8-xu2LVa_ltH1XkuV5rqEiduusz8TI' alt="" className="rounded-circle"/>
           <div className='personal-details'><div className='personal-name'>Abdulrahman Ramadan </div>
           <div>
           <a href='https://www.linkedin.com/in/ramadan46/'>

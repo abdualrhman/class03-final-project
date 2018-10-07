@@ -21,7 +21,6 @@ import '../styles/index.css'
   render(){
     return(
         <div>
-        {console.log(window.location.pathname.substr(1))}
         <div className="navbar  brand">
         <ul className='nav-list' >
         <a href='/' className={this.state.class=== '' ? 'active nav-item' : 'nav-item'} onClick={this.clickHandler} name='home'>home</a>

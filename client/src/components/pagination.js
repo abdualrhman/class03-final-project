@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
 export default class Pagination extends Component {

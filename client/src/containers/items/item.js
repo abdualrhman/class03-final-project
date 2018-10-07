@@ -27,7 +27,7 @@ export default class Item extends Component {
     .then(function(data){
       me.setState({
         value : data
-      },()=>{console.log(me.state.value)})
+      })
     })
     .catch(console.log)
   }
@@ -35,7 +35,6 @@ export default class Item extends Component {
     const {value} = this.state;
     return (
       <div className='item-container jumbotron'>
-      {value&&console.log(value)}
       {
         value
         &&

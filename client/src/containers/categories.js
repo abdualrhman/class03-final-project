@@ -24,7 +24,7 @@ export default class CategoryManeger extends Component {
     .then(function(data){
       me.setState({
         value : data
-      },()=>{console.log(me.state.value)})
+      })
     })
     .catch(console.log)
   }
@@ -45,7 +45,6 @@ export default class CategoryManeger extends Component {
             {a.id===4 && <i className="fas fa-code-branch icon"></i>}
             {a.id===5 && <i className="fas fa-sitemap icon"></i>}
             </button>
-            {console.log(a)}
           </Link>
           </div>
           )
