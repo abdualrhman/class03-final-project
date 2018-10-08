@@ -13,4 +13,4 @@ Note that the project is split into two sub-projects. One for the [client](/clie
 ```
 git clone git@github.com:abdualrhman/share-content-platform.git
 ```
-and then do `npm install` for both folders `server` and `client`
+Go to the  `server` and `client` folders to see the specific instructions

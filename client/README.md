@@ -2,9 +2,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The original Create React App readme can be found [here](/client/create-react-app-readme.md)
 
-# Client
-
-In this folder you will be building a React-based UI that will be communicating with the API in the [server folder](../server).
 
 ## Folder structure
 
@@ -17,4 +14,3 @@ Try to adhere to the folder structure given within the `/src` folder. Refer to t
 [/services](/client/src/services/README.md)
 
 [/styles](/client/src/styles/README.md)
-
